@@ -3,265 +3,384 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رحمان رحمتی</title>
+<title>رحمان رحمتی | طراحی سایت</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: Tahoma, Arial, sans-serif;
-    background: #05050a;
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     color: #f5f5f5;
     line-height: 1.8;
+    min-height: 100vh;
+    position: relative;
     overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,110,196,0.25), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(120,115,245,0.25), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(74,222,128,0.15), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Top sticky CTA bar */
+  .cta-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15,15,25,0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #1a1a2e;
+    font-weight: 800;
+    font-size: 0.95em;
+    padding: 11px 28px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ffd166, #ff9ecf, #7873f5);
+    background-size: 200% auto;
+    box-shadow: 0 4px 18px rgba(255,110,196,0.4);
+    animation: ctaGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes ctaGlow {
+    0%, 100% { background-position: 0% center; box-shadow: 0 4px 18px rgba(255,110,196,0.4); }
+    50% { background-position: 100% center; box-shadow: 0 4px 24px rgba(120,115,245,0.55); }
   }
 
   header {
     position: relative;
-    padding: 100px 20px 80px;
+    z-index: 1;
+    padding: 50px 20px 40px;
     text-align: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0f0c29, #1a0b3d, #3b1e6e, #24243e);
-    background-size: 300% 300%;
-    animation: bgShift 14s ease infinite;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
-  @keyframes bgShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .stars {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(2px 2px at 15% 25%, #fff, transparent),
-      radial-gradient(2px 2px at 55% 65%, #fff, transparent),
-      radial-gradient(1px 1px at 75% 15%, #fff, transparent),
-      radial-gradient(1px 1px at 30% 80%, #fff, transparent),
-      radial-gradient(2px 2px at 88% 50%, #fff, transparent),
-      radial-gradient(1px 1px at 8% 55%, #fff, transparent),
-      radial-gradient(1px 1px at 65% 90%, #fff, transparent),
-      radial-gradient(2px 2px at 45% 10%, #fff, transparent);
-    background-size: 200% 200%;
-    opacity: 0.55;
-    animation: twinkle 4s ease-in-out infinite alternate;
-  }
-
-  @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.7; } }
-
-  .ring {
-    position: absolute;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .ring1 { width: 340px; height: 340px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 30s linear infinite; }
-  .ring2 { width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 45s linear infinite reverse; border-style: dashed; opacity: 0.5; }
-
-  @keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
-
-  .orb { position: absolute; border-radius: 50%; filter: blur(55px); opacity: 0.6; pointer-events: none; }
-  .orb1 { width: 280px; height: 280px; background: #ff6ec4; top: -70px; left: -50px; animation: float1 9s ease-in-out infinite; }
-  .orb2 { width: 240px; height: 240px; background: #7873f5; bottom: -80px; right: -40px; animation: float2 11s ease-in-out infinite; }
-  .orb3 { width: 200px; height: 200px; background: #4ade80; top: 35%; right: 15%; animation: float3 13s ease-in-out infinite; }
-  .orb4 { width: 170px; height: 170px; background: #ffd166; top: 8%; left: 28%; animation: float2 10s ease-in-out infinite; }
-  .orb5 { width: 150px; height: 150px; background: #38bdf8; bottom: 5%; left: 15%; animation: float3 12s ease-in-out infinite; }
-
-  @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(45px,35px) scale(1.2);} }
-  @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(-35px,-30px) scale(1.15);} }
-  @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(-25px,40px) scale(0.85);} }
-
-  .particle {
-    position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%;
-    opacity: 0.7; box-shadow: 0 0 6px 1px rgba(255,255,255,0.6); animation: rise linear infinite;
-  }
-  @keyframes rise {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    10% { opacity: 0.9; }
-    90% { opacity: 0.3; }
-    100% { transform: translateY(-340px) scale(0.4); opacity: 0; }
-  }
-
-  header .content { position: relative; z-index: 2; }
-
-  .avatar-wrap {
+  .glass-header {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 45px 25px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
     position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 24px;
+    overflow: hidden;
   }
+
+  .glass-header::after {
+    content: "";
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 60%; height: 200%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: rotate(20deg);
+    animation: shimmer 5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -30%; }
+    50% { left: 110%; }
+    100% { left: 110%; }
+  }
+
+  .avatar-wrap { position: relative; width: 130px; height: 130px; margin: 0 auto 20px; }
 
   .avatar-ring {
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
+    position: absolute; inset: -6px; border-radius: 50%;
     background: conic-gradient(from 0deg, #ff6ec4, #7873f5, #4ade80, #ffd166, #ff6ec4);
     animation: rotateRing 6s linear infinite;
+    filter: blur(1px);
   }
 
   @keyframes rotateRing { to { transform: rotate(360deg); } }
 
   header img {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #05050a;
-    display: block;
+    position: relative; width: 130px; height: 130px; border-radius: 50%;
+    object-fit: cover; border: 3px solid rgba(255,255,255,0.6); display: block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   }
 
   header h1 {
-    font-size: 2.7em;
-    margin-bottom: 12px;
-    font-weight: 800;
-    background: linear-gradient(90deg, #fff, #ff9ecf, #c4b5fd, #ffd166, #fff);
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shine 6s linear infinite;
+    position: relative; font-size: 2.2em; margin-bottom: 8px; font-weight: 800;
+    color: #ffffff; text-shadow: 0 2px 20px rgba(120,115,245,0.6);
   }
 
-  @keyframes shine { to { background-position: 300% center; } }
+  header p { position: relative; font-size: 1.05em; color: #d8d4ff; letter-spacing: 0.5px; }
 
-  header p {
-    font-size: 1.1em;
-    color: #e0dcff;
-    letter-spacing: 1px;
+  .tagline {
+    position: relative;
+    margin-top: 16px;
+    font-size: 0.98em;
+    color: #ffe9f6;
+    background: rgba(255,255,255,0.08);
     display: inline-block;
-    padding: 6px 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    background: rgba(255,255,255,0.05);
+    padding: 8px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
   }
 
-  nav { display: flex; justify-content: center; gap: 14px; padding: 28px; flex-wrap: wrap; }
+  nav { position: relative; z-index: 1; display: flex; justify-content: center; gap: 12px; padding: 26px 20px; flex-wrap: wrap; }
 
   nav a {
-    color: #1a1a2e; text-decoration: none; font-size: 0.95em; font-weight: 700;
-    padding: 11px 24px; border-radius: 26px;
-    background: linear-gradient(135deg, #ffffff, #f0e8ff);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    color: #ffffff; text-decoration: none; font-size: 0.9em; font-weight: 600;
+    padding: 10px 20px; border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
     transition: 0.3s;
   }
-  nav a:hover { transform: translateY(-4px) scale(1.06); box-shadow: 0 10px 25px rgba(120,115,245,0.5); }
 
-  section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+  nav a:hover {
+    background: rgba(255,255,255,0.2); transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(120,115,245,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  section { position: relative; z-index: 1; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+
+  .glass-panel {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 26px; padding: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
 
   section h2 {
-    font-size: 1.8em; margin-bottom: 20px; font-weight: 700;
-    background: linear-gradient(90deg, #7873f5, #ff6ec4, #ffd166);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-size: 1.5em; margin-bottom: 16px; color: #ffffff;
     display: flex; align-items: center; gap: 10px;
   }
 
   section h2::before {
-    content: "";
-    width: 8px; height: 8px; border-radius: 50%;
-    background: linear-gradient(135deg, #ff6ec4, #7873f5);
-    box-shadow: 0 0 10px #ff6ec4;
+    content: ""; width: 9px; height: 9px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5); box-shadow: 0 0 12px #ff6ec4;
     display: inline-block;
   }
 
-  section p { color: #d0d0dd; }
+  section > .glass-panel > p { color: #e2e0f5; }
 
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 26px; }
+  .cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px; margin-top: 22px;
+  }
 
   .card {
-    position: relative; background: linear-gradient(145deg, #17172455, #12121c);
-    border-radius: 22px; padding: 30px; border: 1px solid #2a2a40; transition: 0.35s; overflow: hidden;
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+    transition: 0.35s;
   }
-  .card::before {
-    content: ""; position: absolute; top: 0; right: 0; left: 0; height: 3px;
-    background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80); opacity: 0.9;
-  }
-  .card:hover { transform: translateY(-8px) scale(1.02); border-color: #7873f5; box-shadow: 0 18px 40px rgba(120, 115, 245, 0.35); }
-  .card h3 { color: #ffb3e0; margin-bottom: 10px; font-size: 1.18em; }
-  .card p { color: #b8b8c8; font-size: 0.95em; }
 
-  .contact-list { list-style: none; display: grid; gap: 14px; }
-  .contact-list li {
-    padding: 16px 20px; background: linear-gradient(135deg, #14141f, #191927);
-    border-radius: 16px; border: 1px solid #24243a; transition: 0.3s;
+  .card:hover {
+    transform: translateY(-8px); background: rgba(255,255,255,0.15);
+    box-shadow: 0 15px 35px rgba(120,115,245,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
   }
-  .contact-list li:hover { border-color: #7873f5; transform: translateX(-4px); }
-  .contact-list a { color: #a5a0ff; text-decoration: none; font-weight: 700; }
+
+  .card h3 { color: #ffffff; margin-bottom: 10px; font-size: 1.1em; }
+  .card p { color: #d5d3ec; font-size: 0.93em; }
+
+  /* Pricing */
+  .price-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px; margin-top: 22px;
+  }
+
+  .price-card {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 26px 20px; text-align: center;
+    transition: 0.35s;
+  }
+
+  .price-card.featured {
+    border: 1px solid rgba(255,209,102,0.6);
+    background: rgba(255,209,102,0.08);
+    transform: scale(1.03);
+  }
+
+  .price-card:hover { transform: translateY(-8px); }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-8px); }
+
+  .price-card h3 { color: #ffffff; font-size: 1.05em; margin-bottom: 10px; }
+  .price-tag { font-size: 1.6em; font-weight: 800; color: #ffd166; margin-bottom: 12px; }
+  .price-card ul { list-style: none; color: #d5d3ec; font-size: 0.9em; text-align: right; }
+  .price-card li { margin-bottom: 8px; }
+
+  /* Testimonials */
+  .testimonial {
+    background: rgba(255,255,255,0.08);
+    border-radius: 18px; padding: 20px; margin-top: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .testimonial p { color: #ece9ff; font-style: italic; margin-bottom: 8px; }
+  .testimonial .author { color: #ffb3e0; font-weight: 700; font-size: 0.9em; font-style: normal; }
+
+  .contact-list { list-style: none; display: grid; gap: 14px; margin-top: 8px; }
+
+  .contact-list li {
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    transition: 0.3s;
+  }
+
+  .contact-list li:hover { background: rgba(255,255,255,0.16); transform: translateX(-4px); }
+  .contact-list a { color: #ffffff; text-decoration: none; font-weight: 700; }
   .contact-list a:hover { color: #ff9ecf; }
 
+  .big-cta {
+    display: block; text-align: center; text-decoration: none;
+    margin-top: 22px; padding: 16px; border-radius: 18px;
+    color: #1a1a2e; font-weight: 800; font-size: 1.05em;
+    background: linear-gradient(90deg, #ffd166, #ff9ecf, #7873f5);
+    background-size: 200% auto;
+    box-shadow: 0 8px 25px rgba(255,110,196,0.35);
+  }
+
   footer {
-    text-align: center; padding: 34px; color: #63637a; font-size: 0.88em;
-    margin-top: 60px; border-top: 1px solid #1c1c2a;
+    position: relative; z-index: 1; text-align: center; padding: 30px;
+    color: #b8b6d9; font-size: 0.88em; margin-top: 40px;
   }
 </style>
 </head>
 <body>
+
+  <div class="cta-bar">
+    <a href="#contact" class="cta-btn">سفارش طراحی سایت 🚀</a>
+  </div>
+
   <header>
-    <div class="stars"></div>
-    <div class="ring ring1"></div>
-    <div class="ring ring2"></div>
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    <div class="orb orb4"></div>
-    <div class="orb orb5"></div>
-    <div class="particle" style="left:6%; animation-duration:7s; animation-delay:0s;"></div>
-    <div class="particle" style="left:16%; animation-duration:9s; animation-delay:1s;"></div>
-    <div class="particle" style="left:26%; animation-duration:6s; animation-delay:2s;"></div>
-    <div class="particle" style="left:38%; animation-duration:8s; animation-delay:0.5s;"></div>
-    <div class="particle" style="left:50%; animation-duration:10s; animation-delay:1.5s;"></div>
-    <div class="particle" style="left:62%; animation-duration:7.5s; animation-delay:2.5s;"></div>
-    <div class="particle" style="left:74%; animation-duration:9.5s; animation-delay:0.8s;"></div>
-    <div class="particle" style="left:84%; animation-duration:6.5s; animation-delay:1.8s;"></div>
-    <div class="particle" style="left:94%; animation-duration:8.5s; animation-delay:1.2s;"></div>
-    <div class="content">
+    <div class="glass-header">
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
         <img src="file_00000000d55481f49271878c537f857a.png" alt="عکس پروفایل">
       </div>
       <h1>رحمان رحمتی</h1>
       <p>برنامه‌نویس و طراح وب</p>
+      <div class="tagline">طراحی سایت‌های شخصی و فروشگاهی، ساده و حرفه‌ای</div>
     </div>
   </header>
 
   <nav>
     <a href="#about">درباره من</a>
-    <a href="#skills">مهارت‌ها</a>
-    <a href="#projects">پروژه‌ها</a>
+    <a href="#services">خدمات</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#pricing">قیمت‌ها</a>
+    <a href="#testimonials">نظرات</a>
     <a href="#contact">تماس</a>
   </nav>
 
   <section id="about">
-    <h2>درباره من</h2>
-    <p>سلام! من رحمان هستم. در حال یادگیری برنامه‌نویسی و ساخت پروژه‌های مختلف از جمله اپلیکیشن‌های اندروید، بات‌ها و همین سایتی که الان می‌بینید هستم. هدفم اینه که هر روز یک قدم جلوتر برم و مهارت‌های جدید یاد بگیرم.</p>
-  </section>
-
-  <section id="skills">
-    <h2>مهارت‌ها</h2>
-    <div class="cards">
-      <div class="card"><h3>Python</h3><p>ساخت بات‌ها، اسکریپت‌ها و برنامه‌های اندرویدی با Kivy</p></div>
-      <div class="card"><h3>HTML و CSS</h3><p>طراحی و ساخت صفحات وب از پایه</p></div>
-      <div class="card"><h3>یادگیری مداوم</h3><p>در حال یادگیری مفاهیم جدید برنامه‌نویسی هر روز</p></div>
+    <div class="glass-panel">
+      <h2>درباره من</h2>
+      <p>سلام! من رحمان هستم، در حال یادگیری و ساخت سایت و اپلیکیشن. سایت‌های ساده، سریع و شیک طراحی می‌کنم که دقیقاً همون چیزی باشه که مشتری می‌خواد.</p>
     </div>
   </section>
 
-  <section id="projects">
-    <h2>پروژه‌ها</h2>
-    <div class="cards">
-      <div class="card"><h3>اپلیکیشن پروفایل کیوی</h3><p>یک اپلیکیشن اندروید ساده با پایتون و کیوی برای نمایش پروفایل کاربر</p></div>
-      <div class="card"><h3>بازی حدس عدد</h3><p>یک بازی ساده برای تمرین مفاهیم پایه پایتون</p></div>
-      <div class="card"><h3>ربات مدیریت گروه روبیکا</h3><p>یک ربات حرفه‌ای برای مدیریت گروه‌های روبیکا</p></div>
+  <section id="services">
+    <div class="glass-panel">
+      <h2>خدمات من</h2>
+      <div class="cards">
+        <div class="card"><h3>طراحی سایت شخصی</h3><p>سایت معرفی شخصی یا نمونه‌کار، تک‌صفحه‌ای و شیک</p></div>
+        <div class="card"><h3>سایت فروشگاهی</h3><p>طراحی صفحهٔ معرفی محصولات با دکمهٔ تماس/سفارش</p></div>
+        <div class="card"><h3>طراحی لندینگ‌پیج</h3><p>صفحهٔ تبلیغاتی برای معرفی یک محصول یا خدمت خاص</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="glass-panel">
+      <h2>نمونه‌کارها</h2>
+      <div class="cards">
+        <div class="card"><h3>همین سایت</h3><p>سایت شخصی من با طراحی شیشه‌ای مدرن — نمونه‌ای از سبک کاری‌ام</p></div>
+        <div class="card"><h3>اپلیکیشن پروفایل کیوی</h3><p>اپلیکیشن اندروید با پایتون و Kivy برای نمایش پروفایل کاربر</p></div>
+        <div class="card"><h3>ربات مدیریت گروه روبیکا</h3><p>ربات حرفه‌ای برای مدیریت گروه‌های روبیکا</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="glass-panel">
+      <h2>قیمت‌ها</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h3>اقتصادی</h3>
+          <div class="price-tag">۲۰۰ هزار تومان</div>
+          <ul>
+            <li>✓ یک صفحه</li>
+            <li>✓ طراحی ساده</li>
+            <li>✓ تحویل ۲ روزه</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <h3>حرفه‌ای</h3>
+          <div class="price-tag">۳۵۰ هزار تومان</div>
+          <ul>
+            <li>✓ چند بخش کامل</li>
+            <li>✓ طراحی شیشه‌ای/متحرک</li>
+            <li>✓ فرم تماس</li>
+            <li>✓ تحویل ۳-۴ روزه</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>فروشگاهی</h3>
+          <div class="price-tag">توافقی</div>
+          <ul>
+            <li>✓ معرفی محصولات</li>
+            <li>✓ دکمهٔ سفارش/تماس</li>
+            <li>✓ طراحی اختصاصی</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="glass-panel">
+      <h2>نظرات مشتریان</h2>
+      <div class="testimonial">
+        <p>«کارش خیلی سریع و تمیز بود، دقیقاً همونی شد که می‌خواستم.»</p>
+        <div class="author">— مشتری اول</div>
+      </div>
+      <div class="testimonial">
+        <p>«ارتباط راحت و قیمت منصفانه، حتماً بازم کار می‌کنیم.»</p>
+        <div class="author">— مشتری دوم</div>
+      </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>تماس با من</h2>
-    <ul class="contact-list">
-      <li>ایمیل: <a href="mailto:rahmanrahmti0000@gmail.com">rahmanrahmti0000@gmail.com</a></li>
-      <li>تلگرام: <a href="https://t.me/Edgjptvds73">@Edgjptvds73</a></li>
-    </ul>
+    <div class="glass-panel">
+      <h2>تماس با من</h2>
+      <ul class="contact-list">
+        <li>ایمیل: <a href="mailto:rahmanrahmti0000@gmail.com">rahmanrahmti0000@gmail.com</a></li>
+        <li>تلگرام: <a href="https://t.me/Edgjptvds73">@Edgjptvds73</a></li>
+        <li>واتساپ: <a href="https://wa.me/rsucwO3zs">@rsucwO3zs</a></li>
+      </ul>
+      <a href="https://t.me/Edgjptvds73" class="big-cta">همین الان سفارش بده 🚀</a>
+    </div>
   </section>
 
   <footer>&copy; 2026 رحمان رحمتی. تمامی حقوق محفوظ است.</footer>
