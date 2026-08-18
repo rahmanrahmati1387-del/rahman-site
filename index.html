@@ -1,1511 +1,66 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>VIRA Studio | طراحی قالب و سایت</title>
-
-<style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
-
-  background:
-    radial-gradient(
-      circle at 15% 15%,
-      rgba(124,92,255,.20),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 10%,
-      rgba(0,200,255,.12),
-      transparent 28%
-    ),
-    #05070d;
-
-  color:#fff;
-  min-height:100vh;
-  line-height:1.8;
-}
-
-button,
-input,
-textarea,
-select{
-  font-family:inherit;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-
-/* =====================================================
-   NAVBAR
-===================================================== */
-
-.navbar{
-  position:sticky;
-  top:0;
-  z-index:100;
-
-  background:
-    rgba(5,7,13,.85);
-
-  backdrop-filter:blur(18px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
-
-  padding:13px 5%;
-}
-
-.nav-inner{
-  max-width:1150px;
-  margin:auto;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:20px;
-}
-
-.logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:4px;
-}
-
-.logo span{
-  color:#8d70ff;
-}
-
-.nav-links{
-  display:flex;
-  gap:20px;
-
-  color:#aaa;
-  font-size:13px;
-}
-
-.nav-links a{
-  transition:.2s;
-}
-
-.nav-links a:hover{
-  color:#fff;
-}
-
-.admin-button{
-  border:0;
-  border-radius:12px;
-
-  padding:9px 15px;
-
-  background:#7657ff;
-  color:#fff;
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-.admin-button:hover{
-  transform:translateY(-2px);
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-  max-width:950px;
-  margin:auto;
-
-  min-height:580px;
-
-  padding:100px 20px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-}
-
-.badge{
-  display:inline-block;
-
-  padding:7px 16px;
-
-  border:
-    1px solid rgba(141,112,255,.35);
-
-  background:
-    rgba(141,112,255,.10);
-
-  border-radius:50px;
-
-  color:#bbaaff;
-  font-size:12px;
-
-  margin-bottom:25px;
-}
-
-.hero h1{
-  font-size:
-    clamp(45px,9vw,85px);
-
-  line-height:1.1;
-
-  margin-bottom:20px;
-}
-
-.gradient{
-  background:
-    linear-gradient(
-      90deg,
-      #fff,
-      #9d83ff,
-      #5ddcff
-    );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.hero p{
-  color:#9ba2b5;
-  max-width:650px;
-  margin:auto;
-}
-
-.hero-actions{
-  margin-top:30px;
-
-  display:flex;
-  justify-content:center;
-
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  border:0;
-  cursor:pointer;
-
-  padding:13px 23px;
-
-  border-radius:13px;
-
-  font-weight:bold;
-
-  transition:.25s;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-.btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.btn-primary{
-  background:#7657ff;
-  color:white;
-}
-
-.btn-secondary{
-  background:
-    rgba(255,255,255,.06);
-
-  border:
-    1px solid rgba(255,255,255,.10);
-
-  color:#fff;
-}
-
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-.section{
-  max-width:1150px;
-  margin:auto;
-
-  padding:70px 20px;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.section-title small{
-  color:#8d70ff;
-  letter-spacing:3px;
-}
-
-.section-title h2{
-  font-size:32px;
-  margin-top:6px;
-}
-
-.section-title p{
-  color:#858b9d;
-  font-size:13px;
-}
-
-
-/* =====================================================
-   CARDS
-===================================================== */
-
-.cards{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:18px;
-}
-
-.card{
-  padding:25px;
-
-  border-radius:20px;
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  background:
-    rgba(255,255,255,.045);
-
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-
-  border-color:
-    rgba(124,92,255,.45);
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#8f95a7;
-  font-size:13px;
-}
-
-
-/* =====================================================
-   TEMPLATES
-===================================================== */
-
-.template{
-  overflow:hidden;
-
-  border-radius:20px;
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  background:
-    rgba(255,255,255,.045);
-}
-
-.preview{
-  height:170px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:28px;
-  font-weight:900;
-
-  color:#9d83ff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #17132d,
-      #101b35
-    );
-}
-
-.template-body{
-  padding:20px;
-}
-
-.template-body p{
-  color:#8f95a7;
-  font-size:12px;
-}
-
-.template-footer{
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  gap:10px;
-
-  margin-top:15px;
-}
-
-.price{
-  color:#9d83ff;
-  font-weight:bold;
-}
-
-.order-btn{
-  border:0;
-
-  border-radius:9px;
-
-  padding:8px 13px;
-
-  color:#fff;
-  background:#7657ff;
-
-  cursor:pointer;
-}
-
-
-/* =====================================================
-   CONTACT / ORDER
-===================================================== */
-
-.contact-box{
-  max-width:700px;
-  margin:auto;
-
-  padding:30px;
-
-  border-radius:22px;
-
-  background:
-    rgba(255,255,255,.045);
-
-  border:
-    1px solid rgba(255,255,255,.09);
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-.form-group label{
-  display:block;
-
-  margin-bottom:6px;
-
-  color:#b8bdca;
-  font-size:13px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-
-  width:100%;
-
-  padding:12px;
-
-  border-radius:11px;
-
-  border:
-    1px solid rgba(255,255,255,.10);
-
-  outline:none;
-
-  background:#0d111c;
-
-  color:#fff;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-
-  border-color:#7657ff;
-
-}
-
-.form-group textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.special-order-row{
-
-  display:flex;
-  align-items:center;
-
-  gap:8px;
-
-  margin-bottom:15px;
-
-  color:#b8bdca;
-
-  font-size:13px;
-}
-
-.special-order-row input{
-  width:auto;
-}
-
-.form-message{
-
-  margin-top:15px;
-
-  padding:12px;
-
-  border-radius:10px;
-
-  display:none;
-
-  font-size:13px;
-}
-
-
-/* =====================================================
-   ADMIN OVERLAY
-===================================================== */
-
-.admin-overlay{
-
-  position:fixed;
-  inset:0;
-
-  z-index:1000;
-
-  display:none;
-
-  background:
-    rgba(0,0,0,.78);
-
-  backdrop-filter:blur(8px);
-
-  overflow:auto;
-}
-
-.admin-panel{
-
-  width:min(1100px,94%);
-
-  margin:40px auto;
-
-  padding:25px;
-
-  border-radius:24px;
-
-  background:#0b0f18;
-
-  border:
-    1px solid rgba(255,255,255,.10);
-}
-
-.admin-header{
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  gap:15px;
-
-  margin-bottom:25px;
-}
-
-.admin-header-actions{
-
-  display:flex;
-
-  gap:8px;
-
-  flex-wrap:wrap;
-}
-
-.close-admin{
-
-  border:0;
-
-  border-radius:10px;
-
-  padding:9px 14px;
-
-  background:#252b38;
-
-  color:#fff;
-
-  cursor:pointer;
-}
-
-.close-admin:hover{
-  background:#303849;
-}
-
-
-/* =====================================================
-   ADMIN LOGIN
-===================================================== */
-
-.admin-login{
-
-  max-width:420px;
-
-  margin:80px auto;
-
-  padding:30px;
-
-  border-radius:20px;
-
-  background:#0b0f18;
-
-  border:
-    1px solid rgba(255,255,255,.10);
-}
-
-.admin-login h2{
-  margin-bottom:20px;
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:15px;
-
-  margin-bottom:25px;
-}
-
-.stat{
-
-  padding:20px;
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-}
-
-.stat strong{
-
-  display:block;
-
-  font-size:28px;
-
-  color:#9d83ff;
-}
-
-.stat span{
-
-  color:#888f9f;
-
-  font-size:12px;
-}
-
-
-/* =====================================================
-   ORDERS
-===================================================== */
-
-.order-list{
-
-  display:grid;
-
-  gap:12px;
-}
-
-.order{
-
-  padding:18px;
-
-  border-radius:15px;
-
-  background:
-    rgba(255,255,255,.045);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-}
-
-.order-top{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:15px;
-
-  flex-wrap:wrap;
-}
-
-.order-name{
-  font-weight:bold;
-}
-
-.order-date{
-
-  color:#777f91;
-
-  font-size:11px;
-}
-
-.order-info{
-
-  color:#aeb4c2;
-
-  font-size:13px;
-
-  margin-top:8px;
-
-  word-break:break-word;
-}
-
-.status{
-
-  display:inline-block;
-
-  margin-top:10px;
-
-  padding:5px 9px;
-
-  border-radius:8px;
-
-  font-size:11px;
-}
-
-.status-new{
-
-  background:
-    rgba(124,92,255,.15);
-
-  color:#b7a8ff;
-}
-
-.status-progress{
-
-  background:
-    rgba(255,190,50,.12);
-
-  color:#ffd166;
-}
-
-.status-done{
-
-  background:
-    rgba(50,220,140,.12);
-
-  color:#6ee7aa;
-}
-
-.special-tag{
-
-  display:inline-block;
-
-  margin-top:10px;
-
-  margin-inline-start:6px;
-
-  padding:5px 9px;
-
-  border-radius:8px;
-
-  font-size:11px;
-
-  background:
-    rgba(255,110,110,.15);
-
-  color:#ff9d9d;
-}
-
-.order-actions{
-
-  margin-top:12px;
-
-  display:flex;
-
-  gap:7px;
-
-  flex-wrap:wrap;
-}
-
-.order-actions button{
-
-  border:0;
-
-  padding:7px 10px;
-
-  border-radius:8px;
-
-  cursor:pointer;
-
-  background:#202634;
-
-  color:#fff;
-
-  font-size:11px;
-}
-
-.order-actions button:hover{
-
-  background:#30394d;
-}
-
-
-/* =====================================================
-   NOTIFICATION
-===================================================== */
-
-.notification{
-
-  position:fixed;
-
-  left:20px;
-  bottom:20px;
-
-  z-index:2000;
-
-  display:none;
-
-  padding:13px 18px;
-
-  border-radius:13px;
-
-  background:#7657ff;
-
-  color:#fff;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.3);
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-  text-align:center;
-
-  padding:40px 20px;
-
-  border-top:
-    1px solid rgba(255,255,255,.07);
-
-  color:#666d7e;
-
-  font-size:12px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:800px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    min-height:500px;
-    padding:80px 20px;
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .admin-header{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .admin-header-actions{
-    width:100%;
-  }
-
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
-
-<div class="navbar">
-
-  <div class="nav-inner">
-
-    <a
-      href="#home"
-      class="logo">
-
-      VIRA<span>.</span>
-
-    </a>
-
-
-    <div class="nav-links">
-
-      <a href="#about">
-        درباره ما
-      </a>
-
-      <a href="#services">
-        خدمات
-      </a>
-
-      <a href="#templates">
-        قالب‌ها
-      </a>
-
-      <a href="#contact">
-        تماس با ما
-      </a>
-
-    </div>
-
-
-    <button
-      class="admin-button"
-      onclick="openAdmin()">
-
-      پنل مدیریت
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<header
-  id="home"
-  class="hero">
-
-  <div>
-
-    <div class="badge">
-
-      VIRA STUDIO
-
-    </div>
-
-
-    <h1>
-
-      طراحی وب
-
-      <br>
-
-      <span class="gradient">
-        به سبک VIRA
-      </span>
-
-    </h1>
-
-
-    <p>
-
-      طراحی و ارائه قالب‌های مدرن،
-      سریع و حرفه‌ای برای کسب‌وکارها،
-      شرکت‌ها و برندها.
-
-    </p>
-
-
-    <div class="hero-actions">
-
-      <a
-        href="#templates"
-        class="btn btn-primary">
-
-        مشاهده قالب‌ها
-
-      </a>
-
-
-      <a
-        href="#contact"
-        class="btn btn-secondary">
-
-        ثبت سفارش
-
-      </a>
-
-    </div>
-
-  </div>
-
-</header>
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section
-  id="about"
-  class="section">
-
-  <div class="section-title">
-
-    <small>
-      ABOUT VIRA
-    </small>
-
-    <h2>
-      درباره VIRA Studio
-    </h2>
-
-    <p>
-      یک مجموعه در حال رشد برای طراحی و تولید قالب‌های وب
-    </p>
-
-  </div>
-
-
-  <div class="card">
-
-    <p>
-
-      VIRA Studio روی طراحی قالب‌های حرفه‌ای،
-      فروشگاهی، شرکتی، شخصی و صفحات فرود تمرکز دارد.
-      هدف ما ساخت محصولات باکیفیت و همکاری با شرکت‌ها
-      و کسب‌وکارهای مختلف است.
-
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section
-  id="services"
-  class="section">
-
-  <div class="section-title">
-
-    <small>
-      SERVICES
-    </small>
-
-    <h2>
-      خدمات ما
-    </h2>
-
-  </div>
-
-
-  <div class="cards">
-
-
-    <div class="card">
-
-      <h3>
-        🛒 قالب فروشگاهی
-      </h3>
-
-      <p>
-
-        قالب‌های مدرن برای نمایش محصولات
-        و فروشگاه‌های اینترنتی.
-
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        🏢 قالب شرکتی
-      </h3>
-
-      <p>
-
-        طراحی حرفه‌ای برای معرفی شرکت و خدمات.
-
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        👤 قالب شخصی
-      </h3>
-
-      <p>
-
-        مناسب رزومه، نمونه‌کار و معرفی افراد.
-
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     TEMPLATES
-===================================================== -->
-
-<section
-  id="templates"
-  class="section">
-
-  <div class="section-title">
-
-    <small>
-      VIRA TEMPLATES
-    </small>
-
-    <h2>
-      قالب‌های آماده
-    </h2>
-
-    <p>
-      قالب موردنظر خود را انتخاب و سفارش دهید.
-    </p>
-
-  </div>
-
-
-  <div class="cards">
-
-
-    <div class="template">
-
-      <div class="preview">
-        SHOP
-      </div>
-
-      <div class="template-body">
-
-        <h3>
-          قالب فروشگاهی
-        </h3>
-
-        <p>
-          قالب مدرن فروشگاهی با طراحی واکنش‌گرا.
-        </p>
-
-        <div class="template-footer">
-
-          <span class="price">
-            ۴٬۰۰۰٬۰۰۰ تومان
-          </span>
-
-          <button
-            class="order-btn"
-            onclick="selectTemplate('قالب فروشگاهی')">
-
-            سفارش
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="template">
-
-      <div class="preview">
-        BUSINESS
-      </div>
-
-      <div class="template-body">
-
-        <h3>
-          قالب شرکتی
-        </h3>
-
-        <p>
-          مناسب شرکت‌ها و مجموعه‌های حرفه‌ای.
-        </p>
-
-        <div class="template-footer">
-
-          <span class="price">
-            ۳٬۵۰۰٬۰۰۰ تومان
-          </span>
-
-          <button
-            class="order-btn"
-            onclick="selectTemplate('قالب شرکتی')">
-
-            سفارش
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="template">
-
-      <div class="preview">
-        PORTFOLIO
-      </div>
-
-      <div class="template-body">
-
-        <h3>
-          قالب نمونه‌کار
-        </h3>
-
-        <p>
-          مناسب برنامه‌نویسان، طراحان و فریلنسرها.
-        </p>
-
-        <div class="template-footer">
-
-          <span class="price">
-            ۲٬۵۰۰٬۰۰۰ تومان
-          </span>
-
-          <button
-            class="order-btn"
-            onclick="selectTemplate('قالب نمونه‌کار')">
-
-            سفارش
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     ORDER FORM
-===================================================== -->
-
-<section
-  id="contact"
-  class="section">
-
-
-  <div class="section-title">
-
-    <small>
-      ORDER
-    </small>
-
-    <h2>
-      ثبت سفارش
-    </h2>
-
-    <p>
-      اطلاعات خود را وارد کنید تا سفارش شما ثبت شود.
-    </p>
-
-  </div>
-
-
-  <div class="contact-box">
-
-
-    <form id="orderForm">
-
-
-      <div class="form-group">
-
-        <label>
-          نام و نام خانوادگی
-        </label>
-
-        <input
-          id="customerName"
-          type="text"
-          required
-          placeholder="مثلاً علی رضایی">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          شماره تماس
-        </label>
-
-        <input
-          id="customerPhone"
-          type="tel"
-          required
-          placeholder="09xxxxxxxxx">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          ایمیل
-        </label>
-
-        <input
-          id="customerEmail"
-          type="email"
-          placeholder="example@email.com">
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          نوع سفارش
-        </label>
-
-        <select id="orderType">
-
-          <option>
-            قالب فروشگاهی
-          </option>
-
-          <option>
-            قالب شرکتی
-          </option>
-
-          <option>
-            قالب نمونه‌کار
-          </option>
-
-          <option>
-            طراحی اختصاصی
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          توضیحات سفارش
-        </label>
-
-        <textarea
-          id="orderDescription"
-          placeholder="توضیحات خود را بنویسید..."></textarea>
-
-      </div>
-
-
-      <div class="special-order-row">
-
-        <input
-          type="checkbox"
-          id="isSpecialOrder">
-
-        <label
-          for="isSpecialOrder"
-          style="margin:0;">
-
-          این یک سفارش ویژه است
-          (درخواست خاص / خارج از قالب‌های معمول)
-
-        </label>
-
-      </div>
-
-
-      <button
-        class="btn btn-primary"
-        type="submit">
-
-        ثبت سفارش
-
-      </button>
-
-
-      <div
-        id="formMessage"
-        class="form-message">
-
-      </div>
-
-
-    </form>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-  <strong>
-    VIRA Studio
-  </strong>
-
-  <p>
-    طراحی قالب و تجربه‌های مدرن وب
-  </p>
-
-  <p>
-    © 2026 VIRA Studio
-  </p>
-
-</footer>
-
-
-<!-- =====================================================
-     ADMIN OVERLAY
-===================================================== -->
-
-<div
-  id="adminOverlay"
-  class="admin-overlay">
-
-  <div id="adminContent">
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     NOTIFICATION
-===================================================== -->
-
-<div
-  id="notification"
-  class="notification">
-
-  سفارش جدید ثبت شد
-
-</div>
-
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
-
 <script>
-
 /* =====================================================
-   SUPABASE CONFIG
+   VIRA - STABLE JAVASCRIPT
 ===================================================== */
 
-const SUPABASE_URL =
-  "https://uyjwaquunhravgwydnzu.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_H0vUq7vQ9Hhp_PvVwlfGGA_EQkwp2RP";
-
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
+let supabaseClient = null;
 let currentProfile = null;
+
+
+/* =====================================================
+   INITIALIZE SUPABASE
+===================================================== */
+
+function initSupabase(){
+
+    if(
+        typeof window.supabase === "undefined" ||
+        !window.supabase.createClient
+    ){
+
+        console.error("Supabase library did not load.");
+
+        return false;
+    }
+
+
+    try{
+
+        const SUPABASE_URL =
+            "https://uyjwaquunhravgwydnzu.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_H0vUq7vQ9Hhp_PvVwlfGGA_EQkwp2RP";
+
+
+        supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        console.log(
+            "VIRA Supabase connected."
+        );
+
+
+        return true;
+
+    }
+    catch(error){
+
+        console.error(
+            "Supabase initialization error:",
+            error
+        );
+
+        return false;
+    }
+
+}
 
 
 /* =====================================================
@@ -1514,47 +69,1027 @@ let currentProfile = null;
 
 function showNotification(text){
 
-  const notification =
-    document.getElementById(
-      "notification"
-    );
+    const box =
+        document.getElementById(
+            "notification"
+        );
 
-  notification.textContent =
-    text;
+    if(!box){
+        return;
+    }
 
-  notification.style.display =
-    "block";
+    box.textContent = text;
 
-  setTimeout(function(){
+    box.style.display = "block";
 
-    notification.style.display =
-      "none";
 
-  },3000);
+    setTimeout(function(){
+
+        box.style.display = "none";
+
+    },3000);
 
 }
 
 
 /* =====================================================
-   TEMPLATE
+   ADMIN OPEN
 ===================================================== */
 
-function selectTemplate(template){
+function openAdmin(){
 
-  const type =
-    document.getElementById(
-      "orderType"
+    const overlay =
+        document.getElementById(
+            "adminOverlay"
+        );
+
+
+    if(!overlay){
+
+        alert(
+            "خطا: پنل مدیریت در صفحه پیدا نشد."
+        );
+
+        return;
+    }
+
+
+    overlay.style.display = "block";
+
+
+    const content =
+        document.getElementById(
+            "adminContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="admin-login">
+
+            <h2>
+                🔐 ورود به پنل مدیریت
+            </h2>
+
+            <p style="
+                color:#888f9f;
+                font-size:12px;
+                margin-bottom:20px;
+            ">
+                برای ورود، ایمیل و رمز عبور مدیر را وارد کنید.
+            </p>
+
+
+            <div class="form-group">
+
+                <label>
+                    ایمیل
+                </label>
+
+                <input
+                    id="adminUsername"
+                    type="email"
+                    placeholder="example@email.com"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رمز عبور
+                </label>
+
+                <input
+                    id="adminPassword"
+                    type="password"
+                    placeholder="رمز عبور"
+                >
+
+            </div>
+
+
+            <button
+                id="loginButton"
+                class="btn btn-primary"
+                onclick="loginAdmin()">
+
+                ورود
+
+            </button>
+
+
+            <button
+                class="close-admin"
+                onclick="closeAdmin()">
+
+                بستن
+
+            </button>
+
+
+            <div
+                id="adminError"
+                style="
+                    color:#ff8a8a;
+                    font-size:12px;
+                    margin-top:15px;
+                ">
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   ADMIN CLOSE
+===================================================== */
+
+function closeAdmin(){
+
+    const overlay =
+        document.getElementById(
+            "adminOverlay"
+        );
+
+
+    if(overlay){
+
+        overlay.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+async function loginAdmin(){
+
+    const errorBox =
+        document.getElementById(
+            "adminError"
+        );
+
+
+    const email =
+        document
+            .getElementById("adminUsername")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("adminPassword")
+            .value;
+
+
+    if(!email || !password){
+
+        errorBox.textContent =
+            "ایمیل و رمز عبور را وارد کنید.";
+
+        return;
+    }
+
+
+    if(!supabaseClient){
+
+        const connected =
+            initSupabase();
+
+
+        if(!connected){
+
+            errorBox.textContent =
+                "اتصال به Supabase برقرار نشد.";
+
+            return;
+        }
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "loginButton"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "در حال ورود...";
+
+
+    errorBox.textContent = "";
+
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth
+                .signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+        if(error){
+
+            console.error(error);
+
+            button.disabled = false;
+
+            button.textContent =
+                "ورود";
+
+
+            errorBox.textContent =
+                "ایمیل یا رمز عبور اشتباه است.";
+
+            return;
+        }
+
+
+        await checkAdminProfile(
+            data.user.id
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        button.disabled = false;
+
+        button.textContent =
+            "ورود";
+
+
+        errorBox.textContent =
+            "خطا در اتصال به سرور.";
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECK PROFILE
+===================================================== */
+
+async function checkAdminProfile(userId){
+
+    const {
+        data:profile,
+        error
+    } =
+        await supabaseClient
+            .from("profiles")
+            .select("*")
+            .eq("id", userId)
+            .single();
+
+
+    if(error){
+
+        console.error(error);
+
+
+        showAdminError(
+            "حساب شما در جدول profiles ثبت نشده است."
+        );
+
+        return;
+    }
+
+
+    if(!profile){
+
+        showAdminError(
+            "پروفایل مدیر پیدا نشد."
+        );
+
+        return;
+    }
+
+
+    if(profile.is_active === false){
+
+        showAdminError(
+            "این حساب غیرفعال است."
+        );
+
+        return;
+    }
+
+
+    if(
+        ![
+            "owner",
+            "admin",
+            "staff"
+        ].includes(profile.role)
+    ){
+
+        showAdminError(
+            "این حساب اجازه ورود به پنل را ندارد."
+        );
+
+        return;
+    }
+
+
+    currentProfile =
+        profile;
+
+
+    loadAdminPanel();
+
+}
+
+
+/* =====================================================
+   ADMIN ERROR
+===================================================== */
+
+function showAdminError(text){
+
+    const content =
+        document.getElementById(
+            "adminContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="admin-login">
+
+            <h2>
+                ❌ خطا
+            </h2>
+
+            <p style="
+                color:#ff8a8a;
+                font-size:13px;
+                margin:15px 0;
+            ">
+                ${escapeHtml(text)}
+            </p>
+
+            <button
+                class="close-admin"
+                onclick="closeAdmin()">
+
+                بستن
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   ADMIN PANEL
+===================================================== */
+
+async function loadAdminPanel(){
+
+    const content =
+        document.getElementById(
+            "adminContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="admin-panel">
+
+            <div class="admin-header">
+
+                <div>
+
+                    <h2>
+                        ⚙️ پنل مدیریت VIRA
+                    </h2>
+
+                    <p style="
+                        color:#888f9f;
+                        font-size:12px;
+                    ">
+
+                        ورود با موفقیت انجام شد.
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <button
+                        class="close-admin"
+                        onclick="logoutAdmin()">
+
+                        خروج
+
+                    </button>
+
+                    <button
+                        class="close-admin"
+                        onclick="closeAdmin()">
+
+                        بستن
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="adminLoading"
+                style="
+                    text-align:center;
+                    color:#888f9f;
+                    padding:30px;
+                ">
+
+                در حال دریافت سفارش‌ها...
+
+            </div>
+
+
+            <div
+                id="ordersContainer">
+            </div>
+
+        </div>
+
+    `;
+
+
+    await loadOrders();
+
+}
+
+
+/* =====================================================
+   LOAD ORDERS
+===================================================== */
+
+async function loadOrders(){
+
+    if(!supabaseClient){
+
+        return;
+    }
+
+
+    const {
+        data:orders,
+        error
+    } =
+        await supabaseClient
+            .from("orders")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+    const loading =
+        document.getElementById(
+            "adminLoading"
+        );
+
+
+    const container =
+        document.getElementById(
+            "ordersContainer"
+        );
+
+
+    if(loading){
+
+        loading.style.display =
+            "none";
+    }
+
+
+    if(error){
+
+        console.error(error);
+
+
+        container.innerHTML = `
+
+            <div class="order">
+
+                <p style="
+                    color:#ff8a8a;
+                ">
+
+                    ❌ خطا در دریافت سفارش‌ها
+
+                </p>
+
+                <p style="
+                    color:#777f91;
+                    font-size:12px;
+                    margin-top:10px;
+                ">
+
+                    ${escapeHtml(
+                        error.message
+                    )}
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    const list =
+        orders || [];
+
+
+    const total =
+        list.length;
+
+
+    const newCount =
+        list.filter(
+            x =>
+                (x.status || "new") === "new"
+        ).length;
+
+
+    const doneCount =
+        list.filter(
+            x =>
+                x.status === "done"
+        ).length;
+
+
+    container.innerHTML = `
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>
+                    ${total}
+                </strong>
+
+                <span>
+                    کل سفارش‌ها
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    ${newCount}
+                </strong>
+
+                <span>
+                    سفارش جدید
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    ${doneCount}
+                </strong>
+
+                <span>
+                    تکمیل‌شده
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="order-list">
+
+            ${
+                list.length
+                ?
+                list.map(
+                    createOrder
+                ).join("")
+                :
+                `
+                    <div class="order">
+
+                        <p style="
+                            text-align:center;
+                            color:#888f9f;
+                        ">
+
+                            هنوز سفارشی ثبت نشده است.
+
+                        </p>
+
+                    </div>
+                `
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   ORDER
+===================================================== */
+
+function createOrder(order){
+
+    const status =
+        order.status || "new";
+
+
+    let statusText =
+        "🆕 جدید";
+
+
+    let statusClass =
+        "status-new";
+
+
+    if(status === "progress"){
+
+        statusText =
+            "🔄 در حال انجام";
+
+        statusClass =
+            "status-progress";
+
+    }
+
+
+    if(status === "done"){
+
+        statusText =
+            "✅ تکمیل شده";
+
+        statusClass =
+            "status-done";
+
+    }
+
+
+    const date =
+        order.created_at
+        ?
+        new Date(
+            order.created_at
+        ).toLocaleString(
+            "fa-IR"
+        )
+        :
+        "بدون تاریخ";
+
+
+    return `
+
+        <div class="order">
+
+            <div class="order-top">
+
+                <div>
+
+                    <div class="order-name">
+
+                        👤
+                        ${escapeHtml(
+                            order.name ||
+                            "بدون نام"
+                        )}
+
+                    </div>
+
+                    <div class="order-date">
+
+                        ${date}
+
+                    </div>
+
+                </div>
+
+
+                <strong>
+
+                    ${escapeHtml(
+                        order.order_type ||
+                        "سفارش"
+                    )}
+
+                </strong>
+
+            </div>
+
+
+            <div class="order-info">
+
+                📞
+                ${escapeHtml(
+                    order.phone || "-"
+                )}
+
+                <br>
+
+                ✉️
+                ${escapeHtml(
+                    order.email || "-"
+                )}
+
+            </div>
+
+
+            <div class="order-info">
+
+                📝
+                ${escapeHtml(
+                    order.description ||
+                    "بدون توضیحات"
+                )}
+
+            </div>
+
+
+            <span
+                class="status ${statusClass}">
+
+                ${statusText}
+
+            </span>
+
+
+            ${
+                order.is_special
+                ?
+                `
+                    <span class="special-tag">
+
+                        ⭐ سفارش ویژه
+
+                    </span>
+                `
+                :
+                ""
+            }
+
+
+            <div class="order-actions">
+
+                <button
+                    onclick="changeStatus(
+                        '${escapeAttr(order.id)}',
+                        'new'
+                    )">
+
+                    🆕 جدید
+
+                </button>
+
+
+                <button
+                    onclick="changeStatus(
+                        '${escapeAttr(order.id)}',
+                        'progress'
+                    )">
+
+                    🔄 در حال انجام
+
+                </button>
+
+
+                <button
+                    onclick="changeStatus(
+                        '${escapeAttr(order.id)}',
+                        'done'
+                    )">
+
+                    ✅ تکمیل
+
+                </button>
+
+
+                <button
+                    onclick="deleteOrder(
+                        '${escapeAttr(order.id)}'
+                    )">
+
+                    🗑 حذف
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
+
+async function changeStatus(
+    id,
+    status
+){
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("orders")
+            .update({
+                status:status
+            })
+            .eq(
+                "id",
+                id
+            );
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "تغییر وضعیت انجام نشد."
+        );
+
+        return;
+    }
+
+
+    await loadOrders();
+
+
+    showNotification(
+        "✅ وضعیت سفارش تغییر کرد"
     );
 
-  type.value =
-    template;
+}
 
 
-  document
-    .getElementById("contact")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+/* =====================================================
+   DELETE ORDER
+===================================================== */
+
+async function deleteOrder(id){
+
+    if(
+        !confirm(
+            "این سفارش حذف شود؟"
+        )
+    ){
+
+        return;
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("orders")
+            .delete()
+            .eq(
+                "id",
+                id
+            );
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "حذف سفارش انجام نشد."
+        );
+
+        return;
+    }
+
+
+    await loadOrders();
+
+
+    showNotification(
+        "🗑 سفارش حذف شد"
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logoutAdmin(){
+
+    if(supabaseClient){
+
+        await supabaseClient.auth
+            .signOut();
+
+    }
+
+
+    currentProfile =
+        null;
+
+
+    openAdmin();
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttr(value){
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll(
+        "'",
+        "\\'"
+    );
 
 }
 
@@ -1563,5 +1098,106 @@ function selectTemplate(template){
    ORDER FORM
 ===================================================== */
 
-document
-  .getElementBy
+const orderForm =
+    document.getElementById(
+        "orderForm"
+    );
+
+
+if(orderForm){
+
+    orderForm.addEventListener(
+        "submit",
+        async function(event){
+
+            event.preventDefault();
+
+
+            if(!supabaseClient){
+
+                const ok =
+                    initSupabase();
+
+
+                if(!ok){
+
+                    alert(
+                        "اتصال به Supabase برقرار نشد."
+                    );
+
+                    return;
+                }
+
+            }
+
+
+            const name =
+                document
+                    .getElementById(
+                        "customerName"
+                    )
+                    .value
+                    .trim();
+
+
+            const phone =
+                document
+                    .getElementById(
+                        "customerPhone"
+                    )
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById(
+                        "customerEmail"
+                    )
+                    .value
+                    .trim();
+
+
+            const orderType =
+                document
+                    .getElementById(
+                        "orderType"
+                    )
+                    .value;
+
+
+            const description =
+                document
+                    .getElementById(
+                        "orderDescription"
+                    )
+                    .value
+                    .trim();
+
+
+            const special =
+                document
+                    .getElementById(
+                        "isSpecialOrder"
+                    )
+                    .checked;
+
+
+            const button =
+                event.target.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            button.disabled =
+                true;
+
+            button.textContent =
+                "در حال ثبت...";
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("orders
