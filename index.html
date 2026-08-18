@@ -315,6 +315,19 @@ a{
   display:none;
 }
 
+.special-order-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:15px;
+  color:#b8bdca;
+  font-size:13px;
+}
+
+.special-order-row input{
+  width:auto;
+}
+
 /* ADMIN */
 
 .admin-overlay{
@@ -446,6 +459,17 @@ a{
 .status-done{
   background:rgba(50,220,140,.12);
   color:#6ee7aa;
+}
+
+.special-tag{
+  display:inline-block;
+  margin-top:10px;
+  margin-inline-start:6px;
+  padding:5px 9px;
+  border-radius:8px;
+  font-size:11px;
+  background:rgba(255,110,110,.15);
+  color:#ff9d9d;
 }
 
 .order-actions{
@@ -858,6 +882,13 @@ footer{
 
       </div>
 
+      <div class="special-order-row">
+        <input type="checkbox" id="isSpecialOrder">
+        <label for="isSpecialOrder" style="margin:0;">
+          این یک سفارش ویژه است (درخواست خاص / خارج از قالب‌های معمول)
+        </label>
+      </div>
+
 
       <button
         class="btn btn-primary"
@@ -920,46 +951,28 @@ footer{
 </div>
 
 
+<!-- Supabase client library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
 <script>
 
 /*
 ====================================================
 VIRA STUDIO
-Simple Order Management System
+Real backend version (Supabase)
 ====================================================
-
-این نسخه برای GitHub Pages است.
-
-اطلاعات سفارش‌ها در localStorage ذخیره می‌شوند.
-یعنی برای نسخه آزمایشی مناسب است.
-
-برای نسخه واقعی چندکاربره باید بعداً دیتابیس
-آنلاین به این قسمت متصل شود.
+This connects the site to a real Supabase database.
+The publishable key below is safe to expose in frontend
+code (it is NOT a secret key) — real security is enforced
+by Row Level Security policies on the database itself.
 */
 
+const SUPABASE_URL = "https://uyjwaquunhravgwydnzu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_H0vUq7vQ9Hhp_PvVwlfGGA_EQkwp2RP";
 
-/* ================================
-   DATABASE
-================================ */
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-function getOrders(){
-
-  return JSON.parse(
-    localStorage.getItem("vira_orders") || "[]"
-  );
-
-}
-
-
-function saveOrders(orders){
-
-  localStorage.setItem(
-    "vira_orders",
-    JSON.stringify(orders)
-  );
-
-}
-
+let currentProfile = null;
 
 /* ================================
    NOTIFICATION
@@ -1002,12 +1015,12 @@ function selectTemplate(template){
 
 
 /* ================================
-   ORDER FORM
+   ORDER FORM (real database)
 ================================ */
 
 document
   .getElementById("orderForm")
-  .addEventListener("submit",function(event){
+  .addEventListener("submit", async function(event){
 
     event.preventDefault();
 
@@ -1026,6 +1039,9 @@ document
     const description =
       document.getElementById("orderDescription").value.trim();
 
+    const isSpecial =
+      document.getElementById("isSpecialOrder").checked;
+
 
     if(!name || !phone){
 
@@ -1035,44 +1051,39 @@ document
 
     }
 
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
 
-    const orders = getOrders();
+    const { error } = await supabaseClient.from("orders").insert({
+      name: name,
+      phone: phone,
+      email: email,
+      order_type: type,
+      description: description,
+      is_special: isSpecial
+    });
 
-
-    const newOrder = {
-
-      id:Date.now(),
-
-      name:name,
-
-      phone:phone,
-
-      email:email,
-
-      type:type,
-
-      description:description,
-
-      status:"جدید",
-
-      date:new Date().toLocaleString("fa-IR")
-
-    };
-
-
-    orders.unshift(newOrder);
-
-    saveOrders(orders);
-
-
-    document
-      .getElementById("orderForm")
-      .reset();
-
+    submitBtn.disabled = false;
 
     const message =
       document.getElementById("formMessage");
 
+    if(error){
+
+      message.textContent =
+        "❌ خطا در ثبت سفارش. لطفاً دوباره تلاش کنید.";
+
+      message.style.display = "block";
+      message.style.background = "rgba(255,90,90,.10)";
+      message.style.color = "#ff8a8a";
+
+      return;
+
+    }
+
+    document
+      .getElementById("orderForm")
+      .reset();
 
     message.textContent =
       "✅ سفارش شما با موفقیت ثبت شد.";
@@ -1104,7 +1115,7 @@ function openAdmin(){
     .getElementById("adminOverlay")
     .style.display = "block";
 
-  showLogin();
+  checkSessionAndRender();
 
 }
 
@@ -1118,7 +1129,34 @@ function closeAdmin(){
 }
 
 
-function showLogin(){
+async function checkSessionAndRender(){
+
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if(!session){
+    showLogin();
+    return;
+  }
+
+  const { data: profile, error } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id", session.user.id)
+    .single();
+
+  if(error || !profile || !profile.is_active || !["owner","admin","staff"].includes(profile.role)){
+    currentProfile = null;
+    showLogin("این حساب دسترسی به پنل مدیریت را ندارد.");
+    return;
+  }
+
+  currentProfile = profile;
+  showAdminPanel();
+
+}
+
+
+function showLogin(errorText){
 
   document
     .getElementById("adminContent")
@@ -1133,13 +1171,13 @@ function showLogin(){
       <div class="form-group">
 
         <label>
-          نام کاربری
+          ایمیل
         </label>
 
         <input
           id="adminUsername"
-          type="text"
-          placeholder="admin">
+          type="email"
+          placeholder="email@example.com">
 
       </div>
 
@@ -1172,17 +1210,7 @@ function showLogin(){
 
       </button>
 
-      <p
-        style="
-        color:#777f91;
-        font-size:11px;
-        margin-top:15px;
-        ">
-
-        نسخه آزمایشی: نام کاربری admin
-        و رمز 1234
-
-      </p>
+      ${ errorText ? `<p style="color:#ff8a8a;font-size:12px;margin-top:15px;">${errorText}</p>` : "" }
 
     </div>
 
@@ -1192,183 +1220,49 @@ function showLogin(){
 
 
 /* ================================
-   LOGIN
+   LOGIN (real Supabase Auth)
 ================================ */
 
-function loginAdmin(){
+async function loginAdmin(){
 
-  const username =
+  const email =
     document
       .getElementById("adminUsername")
-      .value;
+      .value.trim();
 
   const password =
     document
       .getElementById("adminPassword")
       .value;
 
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
 
-  if(
-    username === "admin" &&
-    password === "1234"
-  ){
-
-    showAdminPanel();
-
-  }else{
-
-    alert(
-      "نام کاربری یا رمز عبور اشتباه است."
-    );
-
+  if(error){
+    alert("ایمیل یا رمز عبور اشتباه است.");
+    return;
   }
+
+  checkSessionAndRender();
 
 }
 
 
+async function logoutAdmin(){
+  await supabaseClient.auth.signOut();
+  currentProfile = null;
+  showLogin();
+}
+
+
 /* ================================
-   ADMIN PANEL
+   ADMIN PANEL (real data)
 ================================ */
 
-function showAdminPanel(){
-
-  const orders = getOrders();
-
-  const newOrders =
-    orders.filter(
-      order => order.status === "جدید"
-    ).length;
-
-  const progressOrders =
-    orders.filter(
-      order => order.status === "در حال انجام"
-    ).length;
-
-  const doneOrders =
-    orders.filter(
-      order => order.status === "تحویل شده"
-    ).length;
-
+async function showAdminPanel(){
 
   document
     .getElementById("adminContent")
-    .innerHTML = `
-
-    <div class="admin-panel">
-
-      <div class="admin-header">
-
-        <div>
-
-          <h2>
-            پنل مدیریت VIRA Studio
-          </h2>
-
-          <p
-            style="
-            color:#777f91;
-            font-size:12px;
-            ">
-
-            مدیریت سفارش‌های سایت
-
-          </p>
-
-        </div>
-
-        <button
-          class="close-admin"
-          onclick="closeAdmin()">
-
-          بستن
-
-        </button>
-
-      </div>
-
-
-      <div class="stats">
-
-        <div class="stat">
-
-          <strong>
-            ${orders.length}
-          </strong>
-
-          <span>
-            کل سفارش‌ها
-          </span>
-
-        </div>
-
-
-        <div class="stat">
-
-          <strong>
-            ${newOrders}
-          </strong>
-
-          <span>
-            سفارش جدید
-          </span>
-
-        </div>
-
-
-        <div class="stat">
-
-          <strong>
-            ${progressOrders}
-          </strong>
-
-          <span>
-            در حال انجام
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div
-        style="
-        display:flex;
-        justify-content:space-between;
-        margin-bottom:15px;
-        ">
-
-        <h3>
-          سفارش‌ها
-        </h3>
-
-        <button
-          class="close-admin"
-          onclick="clearAllOrders()">
-
-          حذف همه
-
-        </button>
-
-      </div>
-
-
-      <div class="order-list">
-
-        ${
-          orders.length === 0
-
-          ?
-
-          `
-          <div class="card">
-
-            هنوز سفارشی ثبت نشده است.
-
-          </div>
-          `
-
-          :
-
-          orders.map(order => `
-
-            <d
+    .innerHTML = `<div class="admin-panel"><p>در حال بارگذاری...</p></div>`;
