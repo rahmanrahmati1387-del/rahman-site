@@ -1,388 +1,959 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رحمان رحمتی | طراحی سایت</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  body {
-    font-family: Tahoma, Arial, sans-serif;
-    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #f5f5f5;
-    line-height: 1.8;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-  }
+  <title>VIRA Studio | طراحی قالب و سایت</title>
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255,110,196,0.25), transparent 40%),
-      radial-gradient(circle at 85% 10%, rgba(120,115,245,0.25), transparent 40%),
-      radial-gradient(circle at 50% 90%, rgba(74,222,128,0.15), transparent 40%);
-    pointer-events: none;
-    z-index: 0;
-  }
+  <meta
+    name="description"
+    content="VIRA Studio؛ طراحی قالب‌های مدرن، فروشگاهی، شرکتی و شخصی برای کسب‌وکارها."
+  >
 
-  /* Top sticky CTA bar */
-  .cta-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(15,15,25,0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    padding: 12px 16px;
-    display: flex;
-    justify-content: center;
-  }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .cta-btn {
-    display: inline-block;
-    text-decoration: none;
-    color: #1a1a2e;
-    font-weight: 800;
-    font-size: 0.95em;
-    padding: 11px 28px;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #ffd166, #ff9ecf, #7873f5);
-    background-size: 200% auto;
-    box-shadow: 0 4px 18px rgba(255,110,196,0.4);
-    animation: ctaGlow 3s ease-in-out infinite;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  @keyframes ctaGlow {
-    0%, 100% { background-position: 0% center; box-shadow: 0 4px 18px rgba(255,110,196,0.4); }
-    50% { background-position: 100% center; box-shadow: 0 4px 24px rgba(120,115,245,0.55); }
-  }
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(124, 92, 255, .20), transparent 32%),
+        radial-gradient(circle at 85% 15%, rgba(0, 200, 255, .13), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(255, 80, 180, .10), transparent 35%),
+        #05070d;
+      color: #fff;
+      line-height: 1.8;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  header {
-    position: relative;
-    z-index: 1;
-    padding: 50px 20px 40px;
-    text-align: center;
-  }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 35px 35px;
+      opacity: .25;
+      z-index: 0;
+    }
 
-  .glass-header {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 45px 25px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 32px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
-    position: relative;
-    overflow: hidden;
-  }
+    a {
+      text-decoration: none;
+    }
 
-  .glass-header::after {
-    content: "";
-    position: absolute;
-    top: -50%; left: -20%;
-    width: 60%; height: 200%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-    transform: rotate(20deg);
-    animation: shimmer 5s ease-in-out infinite;
-  }
+    /* HEADER */
 
-  @keyframes shimmer {
-    0% { left: -30%; }
-    50% { left: 110%; }
-    100% { left: 110%; }
-  }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 5%;
+      background: rgba(5, 7, 13, .82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
 
-  .avatar-wrap { position: relative; width: 130px; height: 130px; margin: 0 auto 20px; }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-  .avatar-ring {
-    position: absolute; inset: -6px; border-radius: 50%;
-    background: conic-gradient(from 0deg, #ff6ec4, #7873f5, #4ade80, #ffd166, #ff6ec4);
-    animation: rotateRing 6s linear infinite;
-    filter: blur(1px);
-  }
+    .logo {
+      color: #fff;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
 
-  @keyframes rotateRing { to { transform: rotate(360deg); } }
+    .logo span {
+      color: #9d83ff;
+    }
 
-  header img {
-    position: relative; width: 130px; height: 130px; border-radius: 50%;
-    object-fit: cover; border: 3px solid rgba(255,255,255,0.6); display: block;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  }
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  header h1 {
-    position: relative; font-size: 2.2em; margin-bottom: 8px; font-weight: 800;
-    color: #ffffff; text-shadow: 0 2px 20px rgba(120,115,245,0.6);
-  }
+    .top-nav a {
+      color: #a8adbd;
+      font-size: 13px;
+      transition: .3s;
+    }
 
-  header p { position: relative; font-size: 1.05em; color: #d8d4ff; letter-spacing: 0.5px; }
+    .top-nav a:hover {
+      color: #fff;
+    }
 
-  .tagline {
-    position: relative;
-    margin-top: 16px;
-    font-size: 0.98em;
-    color: #ffe9f6;
-    background: rgba(255,255,255,0.08);
-    display: inline-block;
-    padding: 8px 18px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
+    .top-button {
+      color: #fff;
+      padding: 9px 17px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c5cff, #5537c7);
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(124,92,255,.25);
+    }
 
-  nav { position: relative; z-index: 1; display: flex; justify-content: center; gap: 12px; padding: 26px 20px; flex-wrap: wrap; }
+    /* HERO */
 
-  nav a {
-    color: #ffffff; text-decoration: none; font-size: 0.9em; font-weight: 600;
-    padding: 10px 20px; border-radius: 50px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.25);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
-    transition: 0.3s;
-  }
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 650px;
+      padding: 100px 5% 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-  nav a:hover {
-    background: rgba(255,255,255,0.2); transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(120,115,245,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
-  }
+    .hero-content {
+      max-width: 850px;
+    }
 
-  section { position: relative; z-index: 1; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 17px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(157,131,255,.35);
+      border-radius: 50px;
+      background: rgba(124,92,255,.10);
+      color: #bbaaff;
+      font-size: 13px;
+    }
 
-  .glass-panel {
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 26px; padding: 32px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
-  }
+    .hero h1 {
+      font-size: clamp(45px, 9vw, 90px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
 
-  section h2 {
-    font-size: 1.5em; margin-bottom: 16px; color: #ffffff;
-    display: flex; align-items: center; gap: 10px;
-  }
+    .hero h1 span {
+      background: linear-gradient(
+        90deg,
+        #fff,
+        #a98cff,
+        #66ddff
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  section h2::before {
-    content: ""; width: 9px; height: 9px; border-radius: 50%;
-    background: linear-gradient(135deg, #ff6ec4, #7873f5); box-shadow: 0 0 12px #ff6ec4;
-    display: inline-block;
-  }
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #9ea4b8;
+      font-size: 17px;
+    }
 
-  section > .glass-panel > p { color: #e2e0f5; }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
 
-  .cards {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 18px; margin-top: 22px;
-  }
+    .primary-button,
+    .secondary-button {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: .3s;
+    }
 
-  .card {
-    background: rgba(255,255,255,0.09);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px; padding: 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-    transition: 0.35s;
-  }
+    .primary-button {
+      color: #fff;
+      background: linear-gradient(135deg, #7c5cff, #563bc9);
+      box-shadow: 0 15px 35px rgba(124,92,255,.28);
+    }
 
-  .card:hover {
-    transform: translateY(-8px); background: rgba(255,255,255,0.15);
-    box-shadow: 0 15px 35px rgba(120,115,245,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
-  }
+    .secondary-button {
+      color: #ddd;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
 
-  .card h3 { color: #ffffff; margin-bottom: 10px; font-size: 1.1em; }
-  .card p { color: #d5d3ec; font-size: 0.93em; }
+    .primary-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-4px);
+    }
 
-  /* Pricing */
-  .price-cards {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 18px; margin-top: 22px;
-  }
+    /* GENERAL */
 
-  .price-card {
-    background: rgba(255,255,255,0.09);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px; padding: 26px 20px; text-align: center;
-    transition: 0.35s;
-  }
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1150px;
+      margin: auto;
+      padding: 75px 5%;
+    }
 
-  .price-card.featured {
-    border: 1px solid rgba(255,209,102,0.6);
-    background: rgba(255,209,102,0.08);
-    transform: scale(1.03);
-  }
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
 
-  .price-card:hover { transform: translateY(-8px); }
-  .price-card.featured:hover { transform: scale(1.03) translateY(-8px); }
+    .section-title span {
+      color: #9d83ff;
+      font-size: 12px;
+      letter-spacing: 4px;
+    }
 
-  .price-card h3 { color: #ffffff; font-size: 1.05em; margin-bottom: 10px; }
-  .price-tag { font-size: 1.6em; font-weight: 800; color: #ffd166; margin-bottom: 12px; }
-  .price-card ul { list-style: none; color: #d5d3ec; font-size: 0.9em; text-align: right; }
-  .price-card li { margin-bottom: 8px; }
+    .section-title h2 {
+      margin-top: 8px;
+      font-size: 35px;
+    }
 
-  /* Testimonials */
-  .testimonial {
-    background: rgba(255,255,255,0.08);
-    border-radius: 18px; padding: 20px; margin-top: 16px;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .testimonial p { color: #ece9ff; font-style: italic; margin-bottom: 8px; }
-  .testimonial .author { color: #ffb3e0; font-weight: 700; font-size: 0.9em; font-style: normal; }
+    .section-title p {
+      margin-top: 8px;
+      color: #858b9d;
+      font-size: 14px;
+    }
 
-  .contact-list { list-style: none; display: grid; gap: 14px; margin-top: 8px; }
+    /* ABOUT */
 
-  .contact-list li {
-    padding: 16px 20px;
-    background: rgba(255,255,255,0.09);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
-    transition: 0.3s;
-  }
+    .about-box {
+      padding: 35px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 25px;
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
 
-  .contact-list li:hover { background: rgba(255,255,255,0.16); transform: translateX(-4px); }
-  .contact-list a { color: #ffffff; text-decoration: none; font-weight: 700; }
-  .contact-list a:hover { color: #ff9ecf; }
+    .about-box p {
+      color: #b5bac9;
+      font-size: 15px;
+    }
 
-  .big-cta {
-    display: block; text-align: center; text-decoration: none;
-    margin-top: 22px; padding: 16px; border-radius: 18px;
-    color: #1a1a2e; font-weight: 800; font-size: 1.05em;
-    background: linear-gradient(90deg, #ffd166, #ff9ecf, #7873f5);
-    background-size: 200% auto;
-    box-shadow: 0 8px 25px rgba(255,110,196,0.35);
-  }
+    /* SERVICES */
 
-  footer {
-    position: relative; z-index: 1; text-align: center; padding: 30px;
-    color: #b8b6d9; font-size: 0.88em; margin-top: 40px;
-  }
-</style>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 27px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.045);
+      transition: .35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124,92,255,.4);
+      background: rgba(124,92,255,.08);
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: rgba(124,92,255,.12);
+      font-size: 23px;
+    }
+
+    .card h3 {
+      margin-bottom: 9px;
+      font-size: 17px;
+    }
+
+    .card p {
+      color: #8f95a7;
+      font-size: 13px;
+    }
+
+    /* TEMPLATES */
+
+    .template-card {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.045);
+      transition: .35s;
+    }
+
+    .template-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(124,92,255,.4);
+    }
+
+    .template-preview {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(135deg, #17132d, #101b35);
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #a98cff;
+    }
+
+    .template-info {
+      padding: 20px;
+    }
+
+    .template-info h3 {
+      margin-bottom: 7px;
+    }
+
+    .template-info p {
+      color: #858b9d;
+      font-size: 12px;
+    }
+
+    .template-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 17px;
+      gap: 10px;
+    }
+
+    .template-price {
+      color: #a98cff;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .template-button {
+      padding: 8px 13px;
+      border-radius: 9px;
+      color: #fff;
+      background: #7c5cff;
+      font-size: 11px;
+    }
+
+    /* TEAM */
+
+    .team-card {
+      text-align: center;
+      padding: 30px 20px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .team-avatar {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c5cff, #35cfff);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .team-card h3 {
+      font-size: 16px;
+    }
+
+    .team-card p {
+      color: #858b9d;
+      font-size: 12px;
+    }
+
+    /* WORK WITH US */
+
+    .work-box {
+      padding: 45px;
+      text-align: center;
+      border-radius: 28px;
+      border: 1px solid rgba(124,92,255,.25);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(124,92,255,.16), transparent 55%),
+        rgba(255,255,255,.045);
+    }
+
+    .work-box h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .work-box p {
+      max-width: 650px;
+      margin: auto;
+      color: #9298aa;
+      font-size: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-item {
+      padding: 23px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.045);
+    }
+
+    .contact-item span {
+      display: block;
+      color: #777d90;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+
+    .contact-item a {
+      color: #fff;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 50px;
+      padding: 45px 5% 25px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      text-align: center;
+    }
+
+    .footer-logo {
+      color: #fff;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    footer p {
+      margin-top: 10px;
+      color: #676d7e;
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .top-nav {
+        display: none;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 580px;
+        padding-top: 75px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-top: 55px;
+        padding-bottom: 55px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .about-box,
+      .work-box {
+        padding: 25px;
+      }
+
+      .top-button {
+        font-size: 10px;
+        padding: 8px 11px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="cta-bar">
-    <a href="#contact" class="cta-btn">سفارش طراحی سایت 🚀</a>
+  <!-- HEADER -->
+
+  <div class="topbar">
+    <div class="topbar-inner">
+
+      <a href="#home" class="logo">
+        VIRA<span>.</span>
+      </a>
+
+      <nav class="top-nav">
+        <a href="#about">درباره ما</a>
+        <a href="#services">خدمات</a>
+        <a href="#templates">قالب‌ها</a>
+        <a href="#team">تیم</a>
+        <a href="#contact">تماس</a>
+      </nav>
+
+      <a href="#contact" class="top-button">
+        سفارش پروژه
+      </a>
+
+    </div>
   </div>
 
-  <header>
-    <div class="glass-header">
-      <div class="avatar-wrap">
-        <div class="avatar-ring"></div>
-        <img src="file_00000000d55481f49271878c537f857a.png" alt="عکس پروفایل">
+  <!-- HERO -->
+
+  <header id="home" class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-badge">
+        VIRA STUDIO
       </div>
-      <h1>رحمان رحمتی</h1>
-      <p>برنامه‌نویس و طراح وب</p>
-      <div class="tagline">طراحی سایت‌های شخصی و فروشگاهی، ساده و حرفه‌ای</div>
+
+      <h1>
+        طراحی دیجیتال
+        <br>
+        <span>با استایل VIRA</span>
+      </h1>
+
+      <p>
+        ما در VIRA Studio قالب‌ها و تجربه‌های وب مدرن،
+        سریع و حرفه‌ای برای برندها و کسب‌وکارها طراحی می‌کنیم.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#templates" class="primary-button">
+          مشاهده قالب‌ها
+        </a>
+
+        <a href="#contact" class="secondary-button">
+          شروع همکاری
+        </a>
+
+      </div>
+
     </div>
+
   </header>
 
-  <nav>
-    <a href="#about">درباره من</a>
-    <a href="#services">خدمات</a>
-    <a href="#portfolio">نمونه‌کارها</a>
-    <a href="#pricing">قیمت‌ها</a>
-    <a href="#testimonials">نظرات</a>
-    <a href="#contact">تماس</a>
-  </nav>
+  <!-- ABOUT -->
 
-  <section id="about">
-    <div class="glass-panel">
-      <h2>درباره من</h2>
-      <p>سلام! من رحمان هستم، در حال یادگیری و ساخت سایت و اپلیکیشن. سایت‌های ساده، سریع و شیک طراحی می‌کنم که دقیقاً همون چیزی باشه که مشتری می‌خواد.</p>
+  <section id="about" class="section">
+
+    <div class="section-title">
+      <span>ABOUT VIRA</span>
+      <h2>درباره VIRA Studio</h2>
+      <p>یک تیم در حال رشد برای ساخت تجربه‌های بهتر وب</p>
     </div>
+
+    <div class="about-box">
+
+      <p>
+        VIRA Studio یک مجموعه طراحی و توسعه وب است که روی
+        ساخت قالب‌های آماده، فروشگاهی، شرکتی، شخصی و
+        صفحات حرفه‌ای تمرکز دارد.
+      </p>
+
+      <br>
+
+      <p>
+        هدف ما این است که با کمک یک تیم خلاق، قالب‌هایی
+        باکیفیت و قابل استفاده برای کسب‌وکارهای مختلف
+        تولید کنیم و به مرور مجموعه VIRA را گسترش دهیم.
+      </p>
+
+    </div>
+
   </section>
 
-  <section id="services">
-    <div class="glass-panel">
-      <h2>خدمات من</h2>
-      <div class="cards">
-        <div class="card"><h3>طراحی سایت شخصی</h3><p>سایت معرفی شخصی یا نمونه‌کار، تک‌صفحه‌ای و شیک</p></div>
-        <div class="card"><h3>سایت فروشگاهی</h3><p>طراحی صفحهٔ معرفی محصولات با دکمهٔ تماس/سفارش</p></div>
-        <div class="card"><h3>طراحی لندینگ‌پیج</h3><p>صفحهٔ تبلیغاتی برای معرفی یک محصول یا خدمت خاص</p></div>
+  <!-- SERVICES -->
+
+  <section id="services" class="section">
+
+    <div class="section-title">
+      <span>SERVICES</span>
+      <h2>خدمات ما</h2>
+      <p>راهکارهای ساده و حرفه‌ای برای حضور آنلاین</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <h3>قالب فروشگاهی</h3>
+        <p>
+          طراحی قالب‌های مدرن برای فروشگاه‌های اینترنتی
+          و نمایش حرفه‌ای محصولات.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <section id="portfolio">
-    <div class="glass-panel">
-      <h2>نمونه‌کارها</h2>
-      <div class="cards">
-        <div class="card"><h3>همین سایت</h3><p>سایت شخصی من با طراحی شیشه‌ای مدرن — نمونه‌ای از سبک کاری‌ام</p></div>
-        <div class="card"><h3>اپلیکیشن پروفایل کیوی</h3><p>اپلیکیشن اندروید با پایتون و Kivy برای نمایش پروفایل کاربر</p></div>
-        <div class="card"><h3>ربات مدیریت گروه روبیکا</h3><p>ربات حرفه‌ای برای مدیریت گروه‌های روبیکا</p></div>
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>قالب شرکتی</h3>
+        <p>
+          قالب‌های حرفه‌ای برای معرفی شرکت‌ها،
+          خدمات و برندها.
+        </p>
       </div>
+
+      <div class="card">
+        <div class="card-icon">👤</div>
+        <h3>قالب شخصی</h3>
+        <p>
+          طراحی سایت شخصی و رزومه برای افراد،
+          فریلنسرها و متخصصان.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Landing Page</h3>
+        <p>
+          صفحات فرود سریع و جذاب برای معرفی
+          محصول یا کمپین تبلیغاتی.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>طراحی رابط کاربری</h3>
+        <p>
+          طراحی ظاهر مدرن و کاربرپسند برای
+          پروژه‌های دیجیتال.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>بهینه‌سازی</h3>
+        <p>
+          تمرکز روی سرعت، طراحی واکنش‌گرا و
+          تجربه کاربری بهتر.
+        </p>
+      </div>
+
     </div>
+
   </section>
 
-  <section id="pricing">
-    <div class="glass-panel">
-      <h2>قیمت‌ها</h2>
-      <div class="price-cards">
-        <div class="price-card">
-          <h3>اقتصادی</h3>
-          <div class="price-tag">۱٬۵۰۰٬۰۰۰ تومان</div>
-          <ul>
-            <li>✓ یک صفحه</li>
-            <li>✓ طراحی ساده</li>
-            <li>✓ تحویل ۲ روزه</li>
-          </ul>
+  <!-- TEMPLATES -->
+
+  <section id="templates" class="section">
+
+    <div class="section-title">
+      <span>VIRA TEMPLATES</span>
+      <h2>قالب‌های VIRA</h2>
+      <p>نمونه‌ای از محصولاتی که می‌توانیم تولید کنیم</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="template-card">
+
+        <div class="template-preview">
+          SHOP
         </div>
-        <div class="price-card featured">
-          <h3>حرفه‌ای</h3>
-          <div class="price-tag">۴٬۰۰۰٬۰۰۰ تومان</div>
-          <ul>
-            <li>✓ چند بخش کامل</li>
-            <li>✓ طراحی شیشه‌ای/متحرک</li>
-            <li>✓ فرم تماس</li>
-            <li>✓ تحویل ۳-۴ روزه</li>
-          </ul>
+
+        <div class="template-info">
+
+          <h3>قالب فروشگاهی VIRA</h3>
+
+          <p>
+            طراحی مدرن برای فروشگاه‌های آنلاین
+          </p>
+
+          <div class="template-bottom">
+
+            <span class="template-price">
+              قیمت: توافقی
+            </span>
+
+            <a href="#contact" class="template-button">
+              سفارش
+            </a>
+
+          </div>
+
         </div>
-        <div class="price-card">
-          <h3>فروشگاهی</h3>
-          <div class="price-tag">توافقی</div>
-          <ul>
-            <li>✓ معرفی محصولات</li>
-            <li>✓ دکمهٔ سفارش/تماس</li>
-            <li>✓ طراحی اختصاصی</li>
-          </ul>
+
+      </div>
+
+      <div class="template-card">
+
+        <div class="template-preview">
+          BUSINESS
         </div>
+
+        <div class="template-info">
+
+          <h3>قالب شرکتی VIRA</h3>
+
+          <p>
+            مناسب معرفی شرکت و خدمات
+          </p>
+
+          <div class="template-bottom">
+
+            <span class="template-price">
+              قیمت: توافقی
+            </span>
+
+            <a href="#contact" class="template-button">
+              سفارش
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
+
+      <div class="template-card">
+
+        <div class="template-preview">
+          PORTFOLIO
+        </div>
+
+        <div class="template-info">
+
+          <h3>قالب نمونه‌کار</h3>
+
+          <p>
+            مناسب طراحان، برنامه‌نویسان و فریلنسرها
+          </p>
+
+          <div class="template-bottom">
+
+            <span class="template-price">
+              قیمت: توافقی
+            </span>
+
+            <a href="#contact" class="template-button">
+              سفارش
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
 
-  <section id="testimonials">
-    <div class="glass-panel">
-      <h2>نظرات مشتریان</h2>
-      <div class="testimonial">
-        <p>«کارش خیلی سریع و تمیز بود، دقیقاً همونی شد که می‌خواستم.»</p>
-        <div class="author">— مشتری اول</div>
-      </div>
-      <div class="testimonial">
-        <p>«ارتباط راحت و قیمت منصفانه، حتماً بازم کار می‌کنیم.»</p>
-        <div class="author">— مشتری دوم</div>
-      </div>
+  <!-- TEAM -->
+
+  <section id="team" class="section">
+
+    <div class="section-title">
+      <span>OUR TEAM</span>
+      <h2>تیم VIRA Studio</h2>
+      <p>این بخش بعداً با اعضای واقعی تیم تکمیل می‌شود.</p>
     </div>
+
+    <div class="cards">
+
+      <div class="team-card">
+
+        <div class="team-avatar">
+          V
+        </div>
+
+        <h3>
+          VIRA Studio
+        </h3>
+
+        <p>
+          مدیریت و توسعه مجموعه
+        </p>
+
+      </div>
+
+      <div class="team-card">
+
+        <div class="team-avatar">
+          +
+        </div>
+
+        <h3>
+          جایگاه همکار
+        </h3>
+
+        <p>
+          طراح و توسعه‌دهنده وب
+        </p>
+
+      </div>
+
+      <div class="team-card">
+
+        <div class="team-avatar">
+          +
+        </div>
+
+        <h3>
+          جایگاه همکار
+        </h3>
+
+        <p>
+          طراح رابط کاربری
+        </p>
+
+      </div>
+
+    </div>
+
   </section>
 
-  <section id="contact">
-    <div class="glass-panel">
-      <h2>تماس با من</h2>
-      <ul class="contact-list">
-        <li>ایمیل: <a href="mailto:rahmanrahmti0000@gmail.com">rahmanrahmti0000@gmail.com</a></li>
-        <li>تلگرام: <a href="https://t.me/Edgjptvds73">@Edgjptvds73</a></li>
-        <li>واتساپ: <a href="https://wa.me/rsucwO3zs">@rsucwO3zs</a></li>
-      </ul>
-      <a href="https://t.me/Edgjptvds73" class="big-cta">همین الان سفارش بده 🚀</a>
+  <!-- WORK WITH US -->
+
+  <section class="section">
+
+    <div class="work-box">
+
+      <h2>
+        با VIRA Studio همکاری کنید
+      </h2>
+
+      <p>
+        اگر شرکت یا مجموعه‌ای هستید و به تعداد زیادی
+        قالب سایت یا طراحی وب نیاز دارید، می‌توانید
+        برای همکاری ماهانه و پروژه‌ای با VIRA Studio
+        تماس بگیرید.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#contact" class="primary-button">
+          درخواست همکاری
+        </a>
+
+      </div>
+
     </div>
+
   </section>
 
-  <footer>&copy; 2026 رحمان رحمتی. تمامی حقوق محفوظ است.</footer>
+  <!-- CONTACT -->
+
+  <section id="contact" class="section">
+
+    <div class="section-title">
+      <span>CONTACT</span>
+      <h2>تماس با VIRA Studio</h2>
+      <p>برای سفارش قالب یا شروع همکاری با ما در ارتباط باشید.</p>
+    </div>
+
+    <div class="contact-box">
+
+      <div class="contact-item">
+
+        <span>ایمیل</span>
+
+        <a href="mailto:virastudio@example.com">
+          virastudio@example.com
+        </a>
+
+      </div>
+
+      <div class="contact-item">
+
+        <span>تلگرام</span>
+
+        <a href="https://t.me/" target="_blank">
+          ارتباط در تلگرام
+        </a>
+
+      </div>
+
+      <div class="contact-item">
+
+        <span>نوع همکاری</span>
+
+        <a href="#contact">
+          فروش قالب و همکاری پروژه‌ای
+        </a>
+
+      </div>
+
+      <div class="contact-item">
+
+        <span>مناسب برای</span>
+
+        <a href="#templates">
+          شرکت‌ها و کسب‌وکارها
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-logo">
+      VIRA<span>.</span>
+    </div>
+
+    <p>
+      VIRA Studio — طراحی قالب و تجربه‌های مدرن وب
+    </p>
+
+    <p>
+      © 2026 VIRA Studio. تمامی حقوق محفوظ است.
+    </p>
+
+  </footer>
+
 </body>
 </html>
+    
