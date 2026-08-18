@@ -1,783 +1,712 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>VIRA Studio | طراحی قالب و سایت</title>
-
-  <meta
-    name="description"
-    content="VIRA Studio؛ طراحی قالب‌های مدرن، فروشگاهی، شرکتی و شخصی برای کسب‌وکارها."
-  >
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Tahoma, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(124, 92, 255, .20), transparent 32%),
-        radial-gradient(circle at 85% 15%, rgba(0, 200, 255, .13), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(255, 80, 180, .10), transparent 35%),
-        #05070d;
-      color: #fff;
-      line-height: 1.8;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 35px 35px;
-      opacity: .25;
-      z-index: 0;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    /* HEADER */
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 12px 5%;
-      background: rgba(5, 7, 13, .82);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .topbar-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      color: #fff;
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    .logo span {
-      color: #9d83ff;
-    }
-
-    .top-nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .top-nav a {
-      color: #a8adbd;
-      font-size: 13px;
-      transition: .3s;
-    }
-
-    .top-nav a:hover {
-      color: #fff;
-    }
-
-    .top-button {
-      color: #fff;
-      padding: 9px 17px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #7c5cff, #5537c7);
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 8px 25px rgba(124,92,255,.25);
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 650px;
-      padding: 100px 5% 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      padding: 8px 17px;
-      margin-bottom: 25px;
-      border: 1px solid rgba(157,131,255,.35);
-      border-radius: 50px;
-      background: rgba(124,92,255,.10);
-      color: #bbaaff;
-      font-size: 13px;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 9vw, 90px);
-      line-height: 1.05;
-      margin-bottom: 25px;
-      font-weight: 900;
-      letter-spacing: -2px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(
-        90deg,
-        #fff,
-        #a98cff,
-        #66ddff
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: #9ea4b8;
-      font-size: 17px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 35px;
-      flex-wrap: wrap;
-    }
-
-    .primary-button,
-    .secondary-button {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 14px;
-      font-weight: bold;
-      transition: .3s;
-    }
-
-    .primary-button {
-      color: #fff;
-      background: linear-gradient(135deg, #7c5cff, #563bc9);
-      box-shadow: 0 15px 35px rgba(124,92,255,.28);
-    }
-
-    .secondary-button {
-      color: #ddd;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-    }
-
-    .primary-button:hover,
-    .secondary-button:hover {
-      transform: translateY(-4px);
-    }
-
-    /* GENERAL */
-
-    .section {
-      position: relative;
-      z-index: 1;
-      max-width: 1150px;
-      margin: auto;
-      padding: 75px 5%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title span {
-      color: #9d83ff;
-      font-size: 12px;
-      letter-spacing: 4px;
-    }
-
-    .section-title h2 {
-      margin-top: 8px;
-      font-size: 35px;
-    }
-
-    .section-title p {
-      margin-top: 8px;
-      color: #858b9d;
-      font-size: 14px;
-    }
-
-    /* ABOUT */
-
-    .about-box {
-      padding: 35px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 25px;
-      background: rgba(255,255,255,.045);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.18);
-    }
-
-    .about-box p {
-      color: #b5bac9;
-      font-size: 15px;
-    }
-
-    /* SERVICES */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 27px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.045);
-      transition: .35s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(124,92,255,.4);
-      background: rgba(124,92,255,.08);
-      box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    }
-
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      border-radius: 14px;
-      background: rgba(124,92,255,.12);
-      font-size: 23px;
-    }
-
-    .card h3 {
-      margin-bottom: 9px;
-      font-size: 17px;
-    }
-
-    .card p {
-      color: #8f95a7;
-      font-size: 13px;
-    }
-
-    /* TEMPLATES */
-
-    .template-card {
-      overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.045);
-      transition: .35s;
-    }
-
-    .template-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(124,92,255,.4);
-    }
-
-    .template-preview {
-      height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        linear-gradient(135deg, #17132d, #101b35);
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: #a98cff;
-    }
-
-    .template-info {
-      padding: 20px;
-    }
-
-    .template-info h3 {
-      margin-bottom: 7px;
-    }
-
-    .template-info p {
-      color: #858b9d;
-      font-size: 12px;
-    }
-
-    .template-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 17px;
-      gap: 10px;
-    }
-
-    .template-price {
-      color: #a98cff;
-      font-weight: bold;
-      font-size: 13px;
-    }
-
-    .template-button {
-      padding: 8px 13px;
-      border-radius: 9px;
-      color: #fff;
-      background: #7c5cff;
-      font-size: 11px;
-    }
-
-    /* TEAM */
-
-    .team-card {
-      text-align: center;
-      padding: 30px 20px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 20px;
-      background: rgba(255,255,255,.045);
-    }
-
-    .team-avatar {
-      width: 85px;
-      height: 85px;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7c5cff, #35cfff);
-      font-size: 28px;
-      font-weight: 900;
-    }
-
-    .team-card h3 {
-      font-size: 16px;
-    }
-
-    .team-card p {
-      color: #858b9d;
-      font-size: 12px;
-    }
-
-    /* WORK WITH US */
-
-    .work-box {
-      padding: 45px;
-      text-align: center;
-      border-radius: 28px;
-      border: 1px solid rgba(124,92,255,.25);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(124,92,255,.16), transparent 55%),
-        rgba(255,255,255,.045);
-    }
-
-    .work-box h2 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .work-box p {
-      max-width: 650px;
-      margin: auto;
-      color: #9298aa;
-      font-size: 14px;
-    }
-
-    /* CONTACT */
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .contact-item {
-      padding: 23px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.045);
-    }
-
-    .contact-item span {
-      display: block;
-      color: #777d90;
-      font-size: 11px;
-      margin-bottom: 5px;
-    }
-
-    .contact-item a {
-      color: #fff;
-      font-size: 14px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 50px;
-      padding: 45px 5% 25px;
-      border-top: 1px solid rgba(255,255,255,.07);
-      text-align: center;
-    }
-
-    .footer-logo {
-      color: #fff;
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    footer p {
-      margin-top: 10px;
-      color: #676d7e;
-      font-size: 12px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .top-nav {
-        display: none;
-      }
-
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 580px;
-        padding-top: 75px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      .hero h1 {
-        font-size: 52px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding-top: 55px;
-        padding-bottom: 55px;
-      }
-
-      .section-title h2 {
-        font-size: 28px;
-      }
-
-      .about-box,
-      .work-box {
-        padding: 25px;
-      }
-
-      .top-button {
-        font-size: 10px;
-        padding: 8px 11px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIRA Studio | طراحی قالب و سایت</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(124,92,255,.20),transparent 30%),
+    radial-gradient(circle at 85% 10%,rgba(0,200,255,.12),transparent 28%),
+    #05070d;
+  color:#fff;
+  min-height:100vh;
+  line-height:1.8;
+}
+
+button,input,textarea,select{
+  font-family:inherit;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* NAV */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,7,13,.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:13px 5%;
+}
+
+.nav-inner{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.logo span{
+  color:#8d70ff;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+  color:#aaa;
+  font-size:13px;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.admin-button{
+  border:0;
+  border-radius:12px;
+  padding:9px 15px;
+  background:#7657ff;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+  max-width:950px;
+  margin:auto;
+  min-height:580px;
+  padding:100px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 16px;
+  border:1px solid rgba(141,112,255,.35);
+  background:rgba(141,112,255,.10);
+  border-radius:50px;
+  color:#bbaaff;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:clamp(45px,9vw,85px);
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#fff,#9d83ff,#5ddcff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  color:#9ba2b5;
+  max-width:650px;
+  margin:auto;
+}
+
+.hero-actions{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  padding:13px 23px;
+  border-radius:13px;
+  font-weight:bold;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.btn-primary{
+  background:#7657ff;
+  color:white;
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:#fff;
+}
+
+/* SECTIONS */
+
+.section{
+  max-width:1150px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-title small{
+  color:#8d70ff;
+  letter-spacing:3px;
+}
+
+.section-title h2{
+  font-size:32px;
+  margin-top:6px;
+}
+
+.section-title p{
+  color:#858b9d;
+  font-size:13px;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  padding:25px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.045);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(124,92,255,.45);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#8f95a7;
+  font-size:13px;
+}
+
+/* TEMPLATES */
+
+.template{
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.045);
+}
+
+.preview{
+  height:170px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:900;
+  color:#9d83ff;
+  background:linear-gradient(135deg,#17132d,#101b35);
+}
+
+.template-body{
+  padding:20px;
+}
+
+.template-body p{
+  color:#8f95a7;
+  font-size:12px;
+}
+
+.template-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:15px;
+}
+
+.price{
+  color:#9d83ff;
+  font-weight:bold;
+}
+
+.order-btn{
+  border:0;
+  border-radius:9px;
+  padding:8px 13px;
+  color:#fff;
+  background:#7657ff;
+  cursor:pointer;
+}
+
+/* CONTACT */
+
+.contact-box{
+  max-width:700px;
+  margin:auto;
+  padding:30px;
+  border-radius:22px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  color:#b8bdca;
+  font-size:13px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:12px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.10);
+  outline:none;
+  background:#0d111c;
+  color:#fff;
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.form-message{
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+}
+
+/* ADMIN */
+
+.admin-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(8px);
+  overflow:auto;
+}
+
+.admin-panel{
+  width:min(1100px,94%);
+  margin:40px auto;
+  padding:25px;
+  border-radius:24px;
+  background:#0b0f18;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.admin-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.close-admin{
+  border:0;
+  border-radius:10px;
+  padding:9px 14px;
+  background:#252b38;
+  color:#fff;
+  cursor:pointer;
+}
+
+.admin-login{
+  max-width:420px;
+  margin:80px auto;
+  padding:30px;
+  border-radius:20px;
+  background:#0b0f18;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.admin-login h2{
+  margin-bottom:20px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat{
+  padding:20px;
+  border-radius:16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+  display:block;
+  font-size:28px;
+  color:#9d83ff;
+}
+
+.stat span{
+  color:#888f9f;
+  font-size:12px;
+}
+
+.order-list{
+  display:grid;
+  gap:12px;
+}
+
+.order{
+  padding:18px;
+  border-radius:15px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.order-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.order-name{
+  font-weight:bold;
+}
+
+.order-date{
+  color:#777f91;
+  font-size:11px;
+}
+
+.order-info{
+  color:#aeb4c2;
+  font-size:13px;
+  margin-top:8px;
+}
+
+.status{
+  display:inline-block;
+  margin-top:10px;
+  padding:5px 9px;
+  border-radius:8px;
+  font-size:11px;
+}
+
+.status-new{
+  background:rgba(124,92,255,.15);
+  color:#b7a8ff;
+}
+
+.status-progress{
+  background:rgba(255,190,50,.12);
+  color:#ffd166;
+}
+
+.status-done{
+  background:rgba(50,220,140,.12);
+  color:#6ee7aa;
+}
+
+.order-actions{
+  margin-top:12px;
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.order-actions button{
+  border:0;
+  padding:7px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  background:#202634;
+  color:#fff;
+  font-size:11px;
+}
+
+/* NOTIFICATION */
+
+.notification{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  z-index:2000;
+  display:none;
+  padding:13px 18px;
+  border-radius:13px;
+  background:#7657ff;
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid rgba(255,255,255,.07);
+  color:#666d7e;
+  font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+  .nav-links{
+    display:none;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+<!-- NAVBAR -->
 
-  <div class="topbar">
-    <div class="topbar-inner">
+<div class="navbar">
+  <div class="nav-inner">
 
-      <a href="#home" class="logo">
-        VIRA<span>.</span>
+    <a href="#home" class="logo">
+      VIRA<span>.</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">درباره ما</a>
+      <a href="#services">خدمات</a>
+      <a href="#templates">قالب‌ها</a>
+      <a href="#contact">تماس با ما</a>
+    </div>
+
+    <button class="admin-button" onclick="openAdmin()">
+      پنل مدیریت
+    </button>
+
+  </div>
+</div>
+
+
+<!-- HERO -->
+
+<header id="home" class="hero">
+
+  <div>
+
+    <div class="badge">
+      VIRA STUDIO
+    </div>
+
+    <h1>
+      طراحی وب
+      <br>
+      <span class="gradient">به سبک VIRA</span>
+    </h1>
+
+    <p>
+      طراحی و ارائه قالب‌های مدرن، سریع و حرفه‌ای
+      برای کسب‌وکارها، شرکت‌ها و برندها.
+    </p>
+
+    <div class="hero-actions">
+
+      <a href="#templates" class="btn btn-primary">
+        مشاهده قالب‌ها
       </a>
 
-      <nav class="top-nav">
-        <a href="#about">درباره ما</a>
-        <a href="#services">خدمات</a>
-        <a href="#templates">قالب‌ها</a>
-        <a href="#team">تیم</a>
-        <a href="#contact">تماس</a>
-      </nav>
-
-      <a href="#contact" class="top-button">
-        سفارش پروژه
+      <a href="#contact" class="btn btn-secondary">
+        ثبت سفارش
       </a>
 
     </div>
+
   </div>
 
-  <!-- HERO -->
+</header>
 
-  <header id="home" class="hero">
 
-    <div class="hero-content">
+<!-- ABOUT -->
 
-      <div class="hero-badge">
-        VIRA STUDIO
+<section id="about" class="section">
+
+  <div class="section-title">
+    <small>ABOUT VIRA</small>
+    <h2>درباره VIRA Studio</h2>
+    <p>یک مجموعه در حال رشد برای طراحی و تولید قالب‌های وب</p>
+  </div>
+
+  <div class="card">
+
+    <p>
+      VIRA Studio روی طراحی قالب‌های حرفه‌ای،
+      فروشگاهی، شرکتی، شخصی و صفحات فرود تمرکز دارد.
+      هدف ما ساخت محصولات باکیفیت و همکاری با شرکت‌ها
+      و کسب‌وکارهای مختلف است.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="section">
+
+  <div class="section-title">
+    <small>SERVICES</small>
+    <h2>خدمات ما</h2>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>🛒 قالب فروشگاهی</h3>
+      <p>
+        قالب‌های مدرن برای نمایش محصولات و فروشگاه‌های اینترنتی.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🏢 قالب شرکتی</h3>
+      <p>
+        طراحی حرفه‌ای برای معرفی شرکت و خدمات.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>👤 قالب شخصی</h3>
+      <p>
+        مناسب رزومه، نمونه‌کار و معرفی افراد.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TEMPLATES -->
+
+<section id="templates" class="section">
+
+  <div class="section-title">
+    <small>VIRA TEMPLATES</small>
+    <h2>قالب‌های آماده</h2>
+    <p>قالب موردنظر خود را انتخاب و سفارش دهید.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="template">
+
+      <div class="preview">
+        SHOP
       </div>
 
-      <h1>
-        طراحی دیجیتال
-        <br>
-        <span>با استایل VIRA</span>
-      </h1>
+      <div class="template-body">
 
-      <p>
-        ما در VIRA Studio قالب‌ها و تجربه‌های وب مدرن،
-        سریع و حرفه‌ای برای برندها و کسب‌وکارها طراحی می‌کنیم.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a href="#templates" class="primary-button">
-          مشاهده قالب‌ها
-        </a>
-
-        <a href="#contact" class="secondary-button">
-          شروع همکاری
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-  <!-- ABOUT -->
-
-  <section id="about" class="section">
-
-    <div class="section-title">
-      <span>ABOUT VIRA</span>
-      <h2>درباره VIRA Studio</h2>
-      <p>یک تیم در حال رشد برای ساخت تجربه‌های بهتر وب</p>
-    </div>
-
-    <div class="about-box">
-
-      <p>
-        VIRA Studio یک مجموعه طراحی و توسعه وب است که روی
-        ساخت قالب‌های آماده، فروشگاهی، شرکتی، شخصی و
-        صفحات حرفه‌ای تمرکز دارد.
-      </p>
-
-      <br>
-
-      <p>
-        هدف ما این است که با کمک یک تیم خلاق، قالب‌هایی
-        باکیفیت و قابل استفاده برای کسب‌وکارهای مختلف
-        تولید کنیم و به مرور مجموعه VIRA را گسترش دهیم.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- SERVICES -->
-
-  <section id="services" class="section">
-
-    <div class="section-title">
-      <span>SERVICES</span>
-      <h2>خدمات ما</h2>
-      <p>راهکارهای ساده و حرفه‌ای برای حضور آنلاین</p>
-    </div>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-icon">🛒</div>
         <h3>قالب فروشگاهی</h3>
+
         <p>
-          طراحی قالب‌های مدرن برای فروشگاه‌های اینترنتی
-          و نمایش حرفه‌ای محصولات.
+          قالب مدرن فروشگاهی با طراحی واکنش‌گرا.
         </p>
+
+        <div class="template-footer">
+
+          <span class="price">
+            ۴٬۰۰۰٬۰۰۰ تومان
+          </span>
+
+          <button
+            class="order-btn"
+            onclick="selectTemplate('قالب فروشگاهی')">
+            سفارش
+          </button>
+
+        </div>
+
       </div>
 
-      <div class="card">
-        <div class="card-icon">💻</div>
+    </div>
+
+
+    <div class="template">
+
+      <div class="preview">
+        BUSINESS
+      </div>
+
+      <div class="template-body">
+
         <h3>قالب شرکتی</h3>
+
         <p>
-          قالب‌های حرفه‌ای برای معرفی شرکت‌ها،
-          خدمات و برندها.
+          مناسب شرکت‌ها و مجموعه‌های حرفه‌ای.
         </p>
-      </div>
 
-      <div class="card">
-        <div class="card-icon">👤</div>
-        <h3>قالب شخصی</h3>
-        <p>
-          طراحی سایت شخصی و رزومه برای افراد،
-          فریلنسرها و متخصصان.
-        </p>
-      </div>
+        <div class="template-footer">
 
-      <div class="card">
-        <div class="card-icon">🚀</div>
-        <h3>Landing Page</h3>
-        <p>
-          صفحات فرود سریع و جذاب برای معرفی
-          محصول یا کمپین تبلیغاتی.
-        </p>
-      </div>
+          <span class="price">
+            ۳٬۵۰۰٬۰۰۰ تومان
+          </span>
 
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>طراحی رابط کاربری</h3>
-        <p>
-          طراحی ظاهر مدرن و کاربرپسند برای
-          پروژه‌های دیجیتال.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>بهینه‌سازی</h3>
-        <p>
-          تمرکز روی سرعت، طراحی واکنش‌گرا و
-          تجربه کاربری بهتر.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TEMPLATES -->
-
-  <section id="templates" class="section">
-
-    <div class="section-title">
-      <span>VIRA TEMPLATES</span>
-      <h2>قالب‌های VIRA</h2>
-      <p>نمونه‌ای از محصولاتی که می‌توانیم تولید کنیم</p>
-    </div>
-
-    <div class="cards">
-
-      <div class="template-card">
-
-        <div class="template-preview">
-          SHOP
-        </div>
-
-        <div class="template-info">
-
-          <h3>قالب فروشگاهی VIRA</h3>
-
-          <p>
-            طراحی مدرن برای فروشگاه‌های آنلاین
-          </p>
-
-          <div class="template-bottom">
-
-            <span class="template-price">
-              قیمت: توافقی
-            </span>
-
-            <a href="#contact" class="template-button">
-              سفارش
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="template-card">
-
-        <div class="template-preview">
-          BUSINESS
-        </div>
-
-        <div class="template-info">
-
-          <h3>قالب شرکتی VIRA</h3>
-
-          <p>
-            مناسب معرفی شرکت و خدمات
-          </p>
-
-          <div class="template-bottom">
-
-            <span class="template-price">
-              قیمت: توافقی
-            </span>
-
-            <a href="#contact" class="template-button">
-              سفارش
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="template-card">
-
-        <div class="template-preview">
-          PORTFOLIO
-        </div>
-
-        <div class="template-info">
-
-          <h3>قالب نمونه‌کار</h3>
-
-          <p>
-            مناسب طراحان، برنامه‌نویسان و فریلنسرها
-          </p>
-
-          <div class="template-bottom">
-
-            <span class="template-price">
-              قیمت: توافقی
-            </span>
-
-            <a href="#contact" class="template-button">
-              سفارش
-            </a>
-
-          </div>
+          <button
+            class="order-btn"
+            onclick="selectTemplate('قالب شرکتی')">
+            سفارش
+          </button>
 
         </div>
 
@@ -785,175 +714,661 @@
 
     </div>
 
-  </section>
 
-  <!-- TEAM -->
+    <div class="template">
 
-  <section id="team" class="section">
-
-    <div class="section-title">
-      <span>OUR TEAM</span>
-      <h2>تیم VIRA Studio</h2>
-      <p>این بخش بعداً با اعضای واقعی تیم تکمیل می‌شود.</p>
-    </div>
-
-    <div class="cards">
-
-      <div class="team-card">
-
-        <div class="team-avatar">
-          V
-        </div>
-
-        <h3>
-          VIRA Studio
-        </h3>
-
-        <p>
-          مدیریت و توسعه مجموعه
-        </p>
-
+      <div class="preview">
+        PORTFOLIO
       </div>
 
-      <div class="team-card">
+      <div class="template-body">
 
-        <div class="team-avatar">
-          +
-        </div>
-
-        <h3>
-          جایگاه همکار
-        </h3>
+        <h3>قالب نمونه‌کار</h3>
 
         <p>
-          طراح و توسعه‌دهنده وب
+          مناسب برنامه‌نویسان، طراحان و فریلنسرها.
         </p>
 
-      </div>
+        <div class="template-footer">
 
-      <div class="team-card">
+          <span class="price">
+            ۲٬۵۰۰٬۰۰۰ تومان
+          </span>
 
-        <div class="team-avatar">
-          +
+          <button
+            class="order-btn"
+            onclick="selectTemplate('قالب نمونه‌کار')">
+            سفارش
+          </button>
+
         </div>
-
-        <h3>
-          جایگاه همکار
-        </h3>
-
-        <p>
-          طراح رابط کاربری
-        </p>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
 
-  <!-- WORK WITH US -->
+</section>
 
-  <section class="section">
 
-    <div class="work-box">
+<!-- ORDER FORM -->
+
+<section id="contact" class="section">
+
+  <div class="section-title">
+
+    <small>ORDER</small>
+
+    <h2>ثبت سفارش</h2>
+
+    <p>
+      اطلاعات خود را وارد کنید تا سفارش شما ثبت شود.
+    </p>
+
+  </div>
+
+
+  <div class="contact-box">
+
+    <form id="orderForm">
+
+      <div class="form-group">
+
+        <label>
+          نام و نام خانوادگی
+        </label>
+
+        <input
+          id="customerName"
+          type="text"
+          required
+          placeholder="مثلاً علی رضایی">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          شماره تماس
+        </label>
+
+        <input
+          id="customerPhone"
+          type="tel"
+          required
+          placeholder="09xxxxxxxxx">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          ایمیل
+        </label>
+
+        <input
+          id="customerEmail"
+          type="email"
+          placeholder="example@email.com">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          نوع سفارش
+        </label>
+
+        <select id="orderType">
+
+          <option>
+            قالب فروشگاهی
+          </option>
+
+          <option>
+            قالب شرکتی
+          </option>
+
+          <option>
+            قالب نمونه‌کار
+          </option>
+
+          <option>
+            طراحی اختصاصی
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          توضیحات سفارش
+        </label>
+
+        <textarea
+          id="orderDescription"
+          placeholder="توضیحات خود را بنویسید..."></textarea>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary"
+        type="submit">
+
+        ثبت سفارش
+
+      </button>
+
+
+      <div
+        id="formMessage"
+        class="form-message">
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <strong>VIRA Studio</strong>
+
+  <p>
+    طراحی قالب و تجربه‌های مدرن وب
+  </p>
+
+  <p>
+    © 2026 VIRA Studio
+  </p>
+
+</footer>
+
+
+<!-- ADMIN OVERLAY -->
+
+<div id="adminOverlay" class="admin-overlay">
+
+  <div id="adminContent">
+
+  </div>
+
+</div>
+
+
+<!-- NOTIFICATION -->
+
+<div
+  id="notification"
+  class="notification">
+
+  سفارش جدید ثبت شد
+
+</div>
+
+
+<script>
+
+/*
+====================================================
+VIRA STUDIO
+Simple Order Management System
+====================================================
+
+این نسخه برای GitHub Pages است.
+
+اطلاعات سفارش‌ها در localStorage ذخیره می‌شوند.
+یعنی برای نسخه آزمایشی مناسب است.
+
+برای نسخه واقعی چندکاربره باید بعداً دیتابیس
+آنلاین به این قسمت متصل شود.
+*/
+
+
+/* ================================
+   DATABASE
+================================ */
+
+function getOrders(){
+
+  return JSON.parse(
+    localStorage.getItem("vira_orders") || "[]"
+  );
+
+}
+
+
+function saveOrders(orders){
+
+  localStorage.setItem(
+    "vira_orders",
+    JSON.stringify(orders)
+  );
+
+}
+
+
+/* ================================
+   NOTIFICATION
+================================ */
+
+function showNotification(text){
+
+  const notification =
+    document.getElementById("notification");
+
+  notification.textContent = text;
+
+  notification.style.display = "block";
+
+  setTimeout(function(){
+
+    notification.style.display = "none";
+
+  },3000);
+
+}
+
+
+/* ================================
+   SELECT TEMPLATE
+================================ */
+
+function selectTemplate(template){
+
+  document.getElementById("orderType").value =
+    template;
+
+  document
+    .getElementById("contact")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* ================================
+   ORDER FORM
+================================ */
+
+document
+  .getElementById("orderForm")
+  .addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const name =
+      document.getElementById("customerName").value.trim();
+
+    const phone =
+      document.getElementById("customerPhone").value.trim();
+
+    const email =
+      document.getElementById("customerEmail").value.trim();
+
+    const type =
+      document.getElementById("orderType").value;
+
+    const description =
+      document.getElementById("orderDescription").value.trim();
+
+
+    if(!name || !phone){
+
+      alert("لطفاً نام و شماره تماس را وارد کنید.");
+
+      return;
+
+    }
+
+
+    const orders = getOrders();
+
+
+    const newOrder = {
+
+      id:Date.now(),
+
+      name:name,
+
+      phone:phone,
+
+      email:email,
+
+      type:type,
+
+      description:description,
+
+      status:"جدید",
+
+      date:new Date().toLocaleString("fa-IR")
+
+    };
+
+
+    orders.unshift(newOrder);
+
+    saveOrders(orders);
+
+
+    document
+      .getElementById("orderForm")
+      .reset();
+
+
+    const message =
+      document.getElementById("formMessage");
+
+
+    message.textContent =
+      "✅ سفارش شما با موفقیت ثبت شد.";
+
+    message.style.display =
+      "block";
+
+    message.style.background =
+      "rgba(70,220,140,.10)";
+
+    message.style.color =
+      "#70e7a4";
+
+
+    showNotification(
+      "🔔 سفارش جدید ثبت شد"
+    );
+
+  });
+
+
+/* ================================
+   ADMIN LOGIN
+================================ */
+
+function openAdmin(){
+
+  document
+    .getElementById("adminOverlay")
+    .style.display = "block";
+
+  showLogin();
+
+}
+
+
+function closeAdmin(){
+
+  document
+    .getElementById("adminOverlay")
+    .style.display = "none";
+
+}
+
+
+function showLogin(){
+
+  document
+    .getElementById("adminContent")
+    .innerHTML = `
+
+    <div class="admin-login">
 
       <h2>
-        با VIRA Studio همکاری کنید
+        🔐 ورود به پنل مدیریت
       </h2>
 
-      <p>
-        اگر شرکت یا مجموعه‌ای هستید و به تعداد زیادی
-        قالب سایت یا طراحی وب نیاز دارید، می‌توانید
-        برای همکاری ماهانه و پروژه‌ای با VIRA Studio
-        تماس بگیرید.
+      <div class="form-group">
+
+        <label>
+          نام کاربری
+        </label>
+
+        <input
+          id="adminUsername"
+          type="text"
+          placeholder="admin">
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          رمز عبور
+        </label>
+
+        <input
+          id="adminPassword"
+          type="password"
+          placeholder="رمز عبور">
+
+      </div>
+
+      <button
+        class="btn btn-primary"
+        onclick="loginAdmin()">
+
+        ورود
+
+      </button>
+
+      <button
+        class="close-admin"
+        onclick="closeAdmin()">
+
+        بستن
+
+      </button>
+
+      <p
+        style="
+        color:#777f91;
+        font-size:11px;
+        margin-top:15px;
+        ">
+
+        نسخه آزمایشی: نام کاربری admin
+        و رمز 1234
+
       </p>
 
-      <div class="hero-buttons">
-
-        <a href="#contact" class="primary-button">
-          درخواست همکاری
-        </a>
-
-      </div>
-
     </div>
 
-  </section>
+  `;
 
-  <!-- CONTACT -->
+}
 
-  <section id="contact" class="section">
 
-    <div class="section-title">
-      <span>CONTACT</span>
-      <h2>تماس با VIRA Studio</h2>
-      <p>برای سفارش قالب یا شروع همکاری با ما در ارتباط باشید.</p>
-    </div>
+/* ================================
+   LOGIN
+================================ */
 
-    <div class="contact-box">
+function loginAdmin(){
 
-      <div class="contact-item">
+  const username =
+    document
+      .getElementById("adminUsername")
+      .value;
 
-        <span>ایمیل</span>
+  const password =
+    document
+      .getElementById("adminPassword")
+      .value;
 
-        <a href="mailto:virastudio@example.com">
-          virastudio@example.com
-        </a>
+
+  if(
+    username === "admin" &&
+    password === "1234"
+  ){
+
+    showAdminPanel();
+
+  }else{
+
+    alert(
+      "نام کاربری یا رمز عبور اشتباه است."
+    );
+
+  }
+
+}
+
+
+/* ================================
+   ADMIN PANEL
+================================ */
+
+function showAdminPanel(){
+
+  const orders = getOrders();
+
+  const newOrders =
+    orders.filter(
+      order => order.status === "جدید"
+    ).length;
+
+  const progressOrders =
+    orders.filter(
+      order => order.status === "در حال انجام"
+    ).length;
+
+  const doneOrders =
+    orders.filter(
+      order => order.status === "تحویل شده"
+    ).length;
+
+
+  document
+    .getElementById("adminContent")
+    .innerHTML = `
+
+    <div class="admin-panel">
+
+      <div class="admin-header">
+
+        <div>
+
+          <h2>
+            پنل مدیریت VIRA Studio
+          </h2>
+
+          <p
+            style="
+            color:#777f91;
+            font-size:12px;
+            ">
+
+            مدیریت سفارش‌های سایت
+
+          </p>
+
+        </div>
+
+        <button
+          class="close-admin"
+          onclick="closeAdmin()">
+
+          بستن
+
+        </button>
 
       </div>
 
-      <div class="contact-item">
 
-        <span>تلگرام</span>
+      <div class="stats">
 
-        <a href="https://t.me/" target="_blank">
-          ارتباط در تلگرام
-        </a>
+        <div class="stat">
+
+          <strong>
+            ${orders.length}
+          </strong>
+
+          <span>
+            کل سفارش‌ها
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>
+            ${newOrders}
+          </strong>
+
+          <span>
+            سفارش جدید
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>
+            ${progressOrders}
+          </strong>
+
+          <span>
+            در حال انجام
+          </span>
+
+        </div>
 
       </div>
 
-      <div class="contact-item">
 
-        <span>نوع همکاری</span>
+      <div
+        style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:15px;
+        ">
 
-        <a href="#contact">
-          فروش قالب و همکاری پروژه‌ای
-        </a>
+        <h3>
+          سفارش‌ها
+        </h3>
+
+        <button
+          class="close-admin"
+          onclick="clearAllOrders()">
+
+          حذف همه
+
+        </button>
 
       </div>
 
-      <div class="contact-item">
 
-        <span>مناسب برای</span>
+      <div class="order-list">
 
-        <a href="#templates">
-          شرکت‌ها و کسب‌وکارها
-        </a>
+        ${
+          orders.length === 0
 
-      </div>
+          ?
 
-    </div>
+          `
+          <div class="card">
 
-  </section>
+            هنوز سفارشی ثبت نشده است.
 
-  <!-- FOOTER -->
+          </div>
+          `
 
-  <footer>
+          :
 
-    <div class="footer-logo">
-      VIRA<span>.</span>
-    </div>
+          orders.map(order => `
 
-    <p>
-      VIRA Studio — طراحی قالب و تجربه‌های مدرن وب
-    </p>
-
-    <p>
-      © 2026 VIRA Studio. تمامی حقوق محفوظ است.
-    </p>
-
-  </footer>
-
-</body>
-</html>
-    
+            <d
