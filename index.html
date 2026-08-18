@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>VIRA Studio | طراحی قالب و سایت</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -17,17 +29,33 @@ html{
 }
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
+  font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+
   background:
-    radial-gradient(circle at 15% 15%,rgba(124,92,255,.20),transparent 30%),
-    radial-gradient(circle at 85% 10%,rgba(0,200,255,.12),transparent 28%),
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(124,92,255,.20),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(0,200,255,.12),
+      transparent 28%
+    ),
     #05070d;
+
   color:#fff;
   min-height:100vh;
   line-height:1.8;
 }
 
-button,input,textarea,select{
+button,
+input,
+textarea,
+select{
   font-family:inherit;
 }
 
@@ -36,24 +64,35 @@ a{
   text-decoration:none;
 }
 
-/* NAV */
+
+/* =====================================================
+   NAVBAR
+===================================================== */
 
 .navbar{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(5,7,13,.85);
+
+  background:
+    rgba(5,7,13,.85);
+
   backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+
   padding:13px 5%;
 }
 
 .nav-inner{
   max-width:1150px;
   margin:auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:20px;
 }
 
@@ -70,8 +109,13 @@ a{
 .nav-links{
   display:flex;
   gap:20px;
+
   color:#aaa;
   font-size:13px;
+}
+
+.nav-links a{
+  transition:.2s;
 }
 
 .nav-links a:hover{
@@ -81,44 +125,78 @@ a{
 .admin-button{
   border:0;
   border-radius:12px;
+
   padding:9px 15px;
+
   background:#7657ff;
   color:#fff;
+
   cursor:pointer;
+
+  transition:.2s;
 }
 
-/* HERO */
+.admin-button:hover{
+  transform:translateY(-2px);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
   max-width:950px;
   margin:auto;
+
   min-height:580px;
+
   padding:100px 20px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
 }
 
 .badge{
   display:inline-block;
+
   padding:7px 16px;
-  border:1px solid rgba(141,112,255,.35);
-  background:rgba(141,112,255,.10);
+
+  border:
+    1px solid rgba(141,112,255,.35);
+
+  background:
+    rgba(141,112,255,.10);
+
   border-radius:50px;
+
   color:#bbaaff;
   font-size:12px;
+
   margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:clamp(45px,9vw,85px);
+  font-size:
+    clamp(45px,9vw,85px);
+
   line-height:1.1;
+
   margin-bottom:20px;
 }
 
 .gradient{
-  background:linear-gradient(90deg,#fff,#9d83ff,#5ddcff);
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #9d83ff,
+      #5ddcff
+    );
+
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -131,8 +209,10 @@ a{
 
 .hero-actions{
   margin-top:30px;
+
   display:flex;
   justify-content:center;
+
   gap:12px;
   flex-wrap:wrap;
 }
@@ -140,14 +220,24 @@ a{
 .btn{
   border:0;
   cursor:pointer;
+
   padding:13px 23px;
+
   border-radius:13px;
+
   font-weight:bold;
+
   transition:.25s;
 }
 
 .btn:hover{
   transform:translateY(-3px);
+}
+
+.btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
 }
 
 .btn-primary{
@@ -156,16 +246,24 @@ a{
 }
 
 .btn-secondary{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
   color:#fff;
 }
 
-/* SECTIONS */
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section{
   max-width:1150px;
   margin:auto;
+
   padding:70px 20px;
 }
 
@@ -189,25 +287,39 @@ a{
   font-size:13px;
 }
 
-/* CARDS */
+
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:18px;
 }
 
 .card{
   padding:25px;
+
   border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.045);
+
   transition:.3s;
 }
 
 .card:hover{
   transform:translateY(-6px);
-  border-color:rgba(124,92,255,.45);
+
+  border-color:
+    rgba(124,92,255,.45);
 }
 
 .card h3{
@@ -219,24 +331,41 @@ a{
   font-size:13px;
 }
 
-/* TEMPLATES */
+
+/* =====================================================
+   TEMPLATES
+===================================================== */
 
 .template{
   overflow:hidden;
+
   border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.045);
 }
 
 .preview{
   height:170px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:28px;
   font-weight:900;
+
   color:#9d83ff;
-  background:linear-gradient(135deg,#17132d,#101b35);
+
+  background:
+    linear-gradient(
+      135deg,
+      #17132d,
+      #101b35
+    );
 }
 
 .template-body{
@@ -250,8 +379,12 @@ a{
 
 .template-footer{
   display:flex;
+
   align-items:center;
   justify-content:space-between;
+
+  gap:10px;
+
   margin-top:15px;
 }
 
@@ -262,22 +395,35 @@ a{
 
 .order-btn{
   border:0;
+
   border-radius:9px;
+
   padding:8px 13px;
+
   color:#fff;
   background:#7657ff;
+
   cursor:pointer;
 }
 
-/* CONTACT */
+
+/* =====================================================
+   CONTACT / ORDER
+===================================================== */
 
 .contact-box{
   max-width:700px;
   margin:auto;
+
   padding:30px;
+
   border-radius:22px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.09);
+
+  background:
+    rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.09);
 }
 
 .form-group{
@@ -286,7 +432,9 @@ a{
 
 .form-group label{
   display:block;
+
   margin-bottom:6px;
+
   color:#b8bdca;
   font-size:13px;
 }
@@ -294,13 +442,29 @@ a{
 .form-group input,
 .form-group textarea,
 .form-group select{
+
   width:100%;
+
   padding:12px;
+
   border-radius:11px;
-  border:1px solid rgba(255,255,255,.10);
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
   outline:none;
+
   background:#0d111c;
+
   color:#fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+
+  border-color:#7657ff;
+
 }
 
 .form-group textarea{
@@ -308,19 +472,17 @@ a{
   resize:vertical;
 }
 
-.form-message{
-  margin-top:15px;
-  padding:12px;
-  border-radius:10px;
-  display:none;
-}
-
 .special-order-row{
+
   display:flex;
   align-items:center;
+
   gap:8px;
+
   margin-bottom:15px;
+
   color:#b8bdca;
+
   font-size:13px;
 }
 
@@ -328,98 +490,201 @@ a{
   width:auto;
 }
 
-/* ADMIN */
+.form-message{
+
+  margin-top:15px;
+
+  padding:12px;
+
+  border-radius:10px;
+
+  display:none;
+
+  font-size:13px;
+}
+
+
+/* =====================================================
+   ADMIN OVERLAY
+===================================================== */
 
 .admin-overlay{
+
   position:fixed;
   inset:0;
+
   z-index:1000;
+
   display:none;
-  background:rgba(0,0,0,.75);
+
+  background:
+    rgba(0,0,0,.78);
+
   backdrop-filter:blur(8px);
+
   overflow:auto;
 }
 
 .admin-panel{
+
   width:min(1100px,94%);
+
   margin:40px auto;
+
   padding:25px;
+
   border-radius:24px;
+
   background:#0b0f18;
-  border:1px solid rgba(255,255,255,.10);
+
+  border:
+    1px solid rgba(255,255,255,.10);
 }
 
 .admin-header{
+
   display:flex;
+
   align-items:center;
   justify-content:space-between;
+
   gap:15px;
+
   margin-bottom:25px;
 }
 
+.admin-header-actions{
+
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+}
+
 .close-admin{
+
   border:0;
+
   border-radius:10px;
+
   padding:9px 14px;
+
   background:#252b38;
+
   color:#fff;
+
   cursor:pointer;
 }
 
+.close-admin:hover{
+  background:#303849;
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
 .admin-login{
+
   max-width:420px;
+
   margin:80px auto;
+
   padding:30px;
+
   border-radius:20px;
+
   background:#0b0f18;
-  border:1px solid rgba(255,255,255,.10);
+
+  border:
+    1px solid rgba(255,255,255,.10);
 }
 
 .admin-login h2{
   margin-bottom:20px;
 }
 
+
+/* =====================================================
+   STATS
+===================================================== */
+
 .stats{
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:15px;
+
   margin-bottom:25px;
 }
 
 .stat{
+
   padding:20px;
+
   border-radius:16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
 .stat strong{
+
   display:block;
+
   font-size:28px;
+
   color:#9d83ff;
 }
 
 .stat span{
+
   color:#888f9f;
+
   font-size:12px;
 }
 
+
+/* =====================================================
+   ORDERS
+===================================================== */
+
 .order-list{
+
   display:grid;
+
   gap:12px;
 }
 
 .order{
+
   padding:18px;
+
   border-radius:15px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
 .order-top{
+
   display:flex;
+
   justify-content:space-between;
+
   gap:15px;
+
   flex-wrap:wrap;
 }
 
@@ -428,95 +693,167 @@ a{
 }
 
 .order-date{
+
   color:#777f91;
+
   font-size:11px;
 }
 
 .order-info{
+
   color:#aeb4c2;
+
   font-size:13px;
+
   margin-top:8px;
+
+  word-break:break-word;
 }
 
 .status{
+
   display:inline-block;
+
   margin-top:10px;
+
   padding:5px 9px;
+
   border-radius:8px;
+
   font-size:11px;
 }
 
 .status-new{
-  background:rgba(124,92,255,.15);
+
+  background:
+    rgba(124,92,255,.15);
+
   color:#b7a8ff;
 }
 
 .status-progress{
-  background:rgba(255,190,50,.12);
+
+  background:
+    rgba(255,190,50,.12);
+
   color:#ffd166;
 }
 
 .status-done{
-  background:rgba(50,220,140,.12);
+
+  background:
+    rgba(50,220,140,.12);
+
   color:#6ee7aa;
 }
 
 .special-tag{
+
   display:inline-block;
+
   margin-top:10px;
+
   margin-inline-start:6px;
+
   padding:5px 9px;
+
   border-radius:8px;
+
   font-size:11px;
-  background:rgba(255,110,110,.15);
+
+  background:
+    rgba(255,110,110,.15);
+
   color:#ff9d9d;
 }
 
 .order-actions{
+
   margin-top:12px;
+
   display:flex;
+
   gap:7px;
+
   flex-wrap:wrap;
 }
 
 .order-actions button{
+
   border:0;
+
   padding:7px 10px;
+
   border-radius:8px;
+
   cursor:pointer;
+
   background:#202634;
+
   color:#fff;
+
   font-size:11px;
 }
 
-/* NOTIFICATION */
+.order-actions button:hover{
 
-.notification{
-  position:fixed;
-  left:20px;
-  bottom:20px;
-  z-index:2000;
-  display:none;
-  padding:13px 18px;
-  border-radius:13px;
-  background:#7657ff;
-  color:#fff;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  background:#30394d;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+.notification{
+
+  position:fixed;
+
+  left:20px;
+  bottom:20px;
+
+  z-index:2000;
+
+  display:none;
+
+  padding:13px 18px;
+
+  border-radius:13px;
+
+  background:#7657ff;
+
+  color:#fff;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.3);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
+
   text-align:center;
+
   padding:40px 20px;
-  border-top:1px solid rgba(255,255,255,.07);
+
+  border-top:
+    1px solid rgba(255,255,255,.07);
+
   color:#666d7e;
+
   font-size:12px;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:800px){
+
   .nav-links{
     display:none;
   }
@@ -529,68 +866,141 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .hero{
+    min-height:500px;
+    padding:80px 20px;
+  }
+
   .hero h1{
     font-size:52px;
   }
+
+  .admin-header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .admin-header-actions{
+    width:100%;
+  }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <div class="navbar">
+
   <div class="nav-inner">
 
-    <a href="#home" class="logo">
+    <a
+      href="#home"
+      class="logo">
+
       VIRA<span>.</span>
+
     </a>
 
+
     <div class="nav-links">
-      <a href="#about">درباره ما</a>
-      <a href="#services">خدمات</a>
-      <a href="#templates">قالب‌ها</a>
-      <a href="#contact">تماس با ما</a>
+
+      <a href="#about">
+        درباره ما
+      </a>
+
+      <a href="#services">
+        خدمات
+      </a>
+
+      <a href="#templates">
+        قالب‌ها
+      </a>
+
+      <a href="#contact">
+        تماس با ما
+      </a>
+
     </div>
 
-    <button class="admin-button" onclick="openAdmin()">
+
+    <button
+      class="admin-button"
+      onclick="openAdmin()">
+
       پنل مدیریت
+
     </button>
 
   </div>
+
 </div>
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<header id="home" class="hero">
+<header
+  id="home"
+  class="hero">
 
   <div>
 
     <div class="badge">
+
       VIRA STUDIO
+
     </div>
 
+
     <h1>
+
       طراحی وب
+
       <br>
-      <span class="gradient">به سبک VIRA</span>
+
+      <span class="gradient">
+        به سبک VIRA
+      </span>
+
     </h1>
 
+
     <p>
-      طراحی و ارائه قالب‌های مدرن، سریع و حرفه‌ای
-      برای کسب‌وکارها، شرکت‌ها و برندها.
+
+      طراحی و ارائه قالب‌های مدرن،
+      سریع و حرفه‌ای برای کسب‌وکارها،
+      شرکت‌ها و برندها.
+
     </p>
+
 
     <div class="hero-actions">
 
-      <a href="#templates" class="btn btn-primary">
+      <a
+        href="#templates"
+        class="btn btn-primary">
+
         مشاهده قالب‌ها
+
       </a>
 
-      <a href="#contact" class="btn btn-secondary">
+
+      <a
+        href="#contact"
+        class="btn btn-secondary">
+
         ثبت سفارش
+
       </a>
 
     </div>
@@ -600,23 +1010,40 @@ footer{
 </header>
 
 
-<!-- ABOUT -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
-<section id="about" class="section">
+<section
+  id="about"
+  class="section">
 
   <div class="section-title">
-    <small>ABOUT VIRA</small>
-    <h2>درباره VIRA Studio</h2>
-    <p>یک مجموعه در حال رشد برای طراحی و تولید قالب‌های وب</p>
+
+    <small>
+      ABOUT VIRA
+    </small>
+
+    <h2>
+      درباره VIRA Studio
+    </h2>
+
+    <p>
+      یک مجموعه در حال رشد برای طراحی و تولید قالب‌های وب
+    </p>
+
   </div>
+
 
   <div class="card">
 
     <p>
+
       VIRA Studio روی طراحی قالب‌های حرفه‌ای،
       فروشگاهی، شرکتی، شخصی و صفحات فرود تمرکز دارد.
       هدف ما ساخت محصولات باکیفیت و همکاری با شرکت‌ها
       و کسب‌وکارهای مختلف است.
+
     </p>
 
   </div>
@@ -624,54 +1051,108 @@ footer{
 </section>
 
 
-<!-- SERVICES -->
+<!-- =====================================================
+     SERVICES
+===================================================== -->
 
-<section id="services" class="section">
+<section
+  id="services"
+  class="section">
 
   <div class="section-title">
-    <small>SERVICES</small>
-    <h2>خدمات ما</h2>
+
+    <small>
+      SERVICES
+    </small>
+
+    <h2>
+      خدمات ما
+    </h2>
+
   </div>
+
 
   <div class="cards">
 
-    <div class="card">
-      <h3>🛒 قالب فروشگاهی</h3>
-      <p>
-        قالب‌های مدرن برای نمایش محصولات و فروشگاه‌های اینترنتی.
-      </p>
-    </div>
 
     <div class="card">
-      <h3>🏢 قالب شرکتی</h3>
+
+      <h3>
+        🛒 قالب فروشگاهی
+      </h3>
+
       <p>
+
+        قالب‌های مدرن برای نمایش محصولات
+        و فروشگاه‌های اینترنتی.
+
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        🏢 قالب شرکتی
+      </h3>
+
+      <p>
+
         طراحی حرفه‌ای برای معرفی شرکت و خدمات.
+
       </p>
+
     </div>
 
+
     <div class="card">
-      <h3>👤 قالب شخصی</h3>
+
+      <h3>
+        👤 قالب شخصی
+      </h3>
+
       <p>
+
         مناسب رزومه، نمونه‌کار و معرفی افراد.
+
       </p>
+
     </div>
+
 
   </div>
 
 </section>
 
 
-<!-- TEMPLATES -->
+<!-- =====================================================
+     TEMPLATES
+===================================================== -->
 
-<section id="templates" class="section">
+<section
+  id="templates"
+  class="section">
 
   <div class="section-title">
-    <small>VIRA TEMPLATES</small>
-    <h2>قالب‌های آماده</h2>
-    <p>قالب موردنظر خود را انتخاب و سفارش دهید.</p>
+
+    <small>
+      VIRA TEMPLATES
+    </small>
+
+    <h2>
+      قالب‌های آماده
+    </h2>
+
+    <p>
+      قالب موردنظر خود را انتخاب و سفارش دهید.
+    </p>
+
   </div>
 
+
   <div class="cards">
+
 
     <div class="template">
 
@@ -681,7 +1162,9 @@ footer{
 
       <div class="template-body">
 
-        <h3>قالب فروشگاهی</h3>
+        <h3>
+          قالب فروشگاهی
+        </h3>
 
         <p>
           قالب مدرن فروشگاهی با طراحی واکنش‌گرا.
@@ -696,7 +1179,9 @@ footer{
           <button
             class="order-btn"
             onclick="selectTemplate('قالب فروشگاهی')">
+
             سفارش
+
           </button>
 
         </div>
@@ -714,7 +1199,9 @@ footer{
 
       <div class="template-body">
 
-        <h3>قالب شرکتی</h3>
+        <h3>
+          قالب شرکتی
+        </h3>
 
         <p>
           مناسب شرکت‌ها و مجموعه‌های حرفه‌ای.
@@ -729,7 +1216,9 @@ footer{
           <button
             class="order-btn"
             onclick="selectTemplate('قالب شرکتی')">
+
             سفارش
+
           </button>
 
         </div>
@@ -747,7 +1236,9 @@ footer{
 
       <div class="template-body">
 
-        <h3>قالب نمونه‌کار</h3>
+        <h3>
+          قالب نمونه‌کار
+        </h3>
 
         <p>
           مناسب برنامه‌نویسان، طراحان و فریلنسرها.
@@ -762,7 +1253,9 @@ footer{
           <button
             class="order-btn"
             onclick="selectTemplate('قالب نمونه‌کار')">
+
             سفارش
+
           </button>
 
         </div>
@@ -771,20 +1264,30 @@ footer{
 
     </div>
 
+
   </div>
 
 </section>
 
 
-<!-- ORDER FORM -->
+<!-- =====================================================
+     ORDER FORM
+===================================================== -->
 
-<section id="contact" class="section">
+<section
+  id="contact"
+  class="section">
+
 
   <div class="section-title">
 
-    <small>ORDER</small>
+    <small>
+      ORDER
+    </small>
 
-    <h2>ثبت سفارش</h2>
+    <h2>
+      ثبت سفارش
+    </h2>
 
     <p>
       اطلاعات خود را وارد کنید تا سفارش شما ثبت شود.
@@ -795,7 +1298,9 @@ footer{
 
   <div class="contact-box">
 
+
     <form id="orderForm">
+
 
       <div class="form-group">
 
@@ -882,11 +1387,22 @@ footer{
 
       </div>
 
+
       <div class="special-order-row">
-        <input type="checkbox" id="isSpecialOrder">
-        <label for="isSpecialOrder" style="margin:0;">
-          این یک سفارش ویژه است (درخواست خاص / خارج از قالب‌های معمول)
+
+        <input
+          type="checkbox"
+          id="isSpecialOrder">
+
+        <label
+          for="isSpecialOrder"
+          style="margin:0;">
+
+          این یک سفارش ویژه است
+          (درخواست خاص / خارج از قالب‌های معمول)
+
         </label>
+
       </div>
 
 
@@ -905,6 +1421,7 @@ footer{
 
       </div>
 
+
     </form>
 
   </div>
@@ -912,11 +1429,15 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-  <strong>VIRA Studio</strong>
+  <strong>
+    VIRA Studio
+  </strong>
 
   <p>
     طراحی قالب و تجربه‌های مدرن وب
@@ -929,9 +1450,13 @@ footer{
 </footer>
 
 
-<!-- ADMIN OVERLAY -->
+<!-- =====================================================
+     ADMIN OVERLAY
+===================================================== -->
 
-<div id="adminOverlay" class="admin-overlay">
+<div
+  id="adminOverlay"
+  class="admin-overlay">
 
   <div id="adminContent">
 
@@ -940,7 +1465,9 @@ footer{
 </div>
 
 
-<!-- NOTIFICATION -->
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
 
 <div
   id="notification"
@@ -951,59 +1478,77 @@ footer{
 </div>
 
 
-<!-- Supabase client library -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
 
 <script>
 
-/*
-====================================================
-VIRA STUDIO
-Real backend version (Supabase)
-====================================================
-This connects the site to a real Supabase database.
-The publishable key below is safe to expose in frontend
-code (it is NOT a secret key) — real security is enforced
-by Row Level Security policies on the database itself.
-*/
+/* =====================================================
+   SUPABASE CONFIG
+===================================================== */
 
-const SUPABASE_URL = "https://uyjwaquunhravgwydnzu.supabase.co";
-const SUPABASE_KEY = "sb_publishable_H0vUq7vQ9Hhp_PvVwlfGGA_EQkwp2RP";
+const SUPABASE_URL =
+  "https://uyjwaquunhravgwydnzu.supabase.co";
 
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_KEY =
+  "sb_publishable_H0vUq7vQ9Hhp_PvVwlfGGA_EQkwp2RP";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
 
 let currentProfile = null;
 
-/* ================================
+
+/* =====================================================
    NOTIFICATION
-================================ */
+===================================================== */
 
 function showNotification(text){
 
   const notification =
-    document.getElementById("notification");
+    document.getElementById(
+      "notification"
+    );
 
-  notification.textContent = text;
+  notification.textContent =
+    text;
 
-  notification.style.display = "block";
+  notification.style.display =
+    "block";
 
   setTimeout(function(){
 
-    notification.style.display = "none";
+    notification.style.display =
+      "none";
 
   },3000);
 
 }
 
 
-/* ================================
-   SELECT TEMPLATE
-================================ */
+/* =====================================================
+   TEMPLATE
+===================================================== */
 
 function selectTemplate(template){
 
-  document.getElementById("orderType").value =
+  const type =
+    document.getElementById(
+      "orderType"
+    );
+
+  type.value =
     template;
+
 
   document
     .getElementById("contact")
@@ -1014,256 +1559,9 @@ function selectTemplate(template){
 }
 
 
-/* ================================
-   ORDER FORM (real database)
-================================ */
+/* =====================================================
+   ORDER FORM
+===================================================== */
 
 document
-  .getElementById("orderForm")
-  .addEventListener("submit", async function(event){
-
-    event.preventDefault();
-
-    const name =
-      document.getElementById("customerName").value.trim();
-
-    const phone =
-      document.getElementById("customerPhone").value.trim();
-
-    const email =
-      document.getElementById("customerEmail").value.trim();
-
-    const type =
-      document.getElementById("orderType").value;
-
-    const description =
-      document.getElementById("orderDescription").value.trim();
-
-    const isSpecial =
-      document.getElementById("isSpecialOrder").checked;
-
-
-    if(!name || !phone){
-
-      alert("لطفاً نام و شماره تماس را وارد کنید.");
-
-      return;
-
-    }
-
-    const submitBtn = event.target.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-
-    const { error } = await supabaseClient.from("orders").insert({
-      name: name,
-      phone: phone,
-      email: email,
-      order_type: type,
-      description: description,
-      is_special: isSpecial
-    });
-
-    submitBtn.disabled = false;
-
-    const message =
-      document.getElementById("formMessage");
-
-    if(error){
-
-      message.textContent =
-        "❌ خطا در ثبت سفارش. لطفاً دوباره تلاش کنید.";
-
-      message.style.display = "block";
-      message.style.background = "rgba(255,90,90,.10)";
-      message.style.color = "#ff8a8a";
-
-      return;
-
-    }
-
-    document
-      .getElementById("orderForm")
-      .reset();
-
-    message.textContent =
-      "✅ سفارش شما با موفقیت ثبت شد.";
-
-    message.style.display =
-      "block";
-
-    message.style.background =
-      "rgba(70,220,140,.10)";
-
-    message.style.color =
-      "#70e7a4";
-
-
-    showNotification(
-      "🔔 سفارش جدید ثبت شد"
-    );
-
-  });
-
-
-/* ================================
-   ADMIN LOGIN
-================================ */
-
-function openAdmin(){
-
-  document
-    .getElementById("adminOverlay")
-    .style.display = "block";
-
-  checkSessionAndRender();
-
-}
-
-
-function closeAdmin(){
-
-  document
-    .getElementById("adminOverlay")
-    .style.display = "none";
-
-}
-
-
-async function checkSessionAndRender(){
-
-  const { data: { session } } = await supabaseClient.auth.getSession();
-
-  if(!session){
-    showLogin();
-    return;
-  }
-
-  const { data: profile, error } = await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id", session.user.id)
-    .single();
-
-  if(error || !profile || !profile.is_active || !["owner","admin","staff"].includes(profile.role)){
-    currentProfile = null;
-    showLogin("این حساب دسترسی به پنل مدیریت را ندارد.");
-    return;
-  }
-
-  currentProfile = profile;
-  showAdminPanel();
-
-}
-
-
-function showLogin(errorText){
-
-  document
-    .getElementById("adminContent")
-    .innerHTML = `
-
-    <div class="admin-login">
-
-      <h2>
-        🔐 ورود به پنل مدیریت
-      </h2>
-
-      <div class="form-group">
-
-        <label>
-          ایمیل
-        </label>
-
-        <input
-          id="adminUsername"
-          type="email"
-          placeholder="email@example.com">
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          رمز عبور
-        </label>
-
-        <input
-          id="adminPassword"
-          type="password"
-          placeholder="رمز عبور">
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        onclick="loginAdmin()">
-
-        ورود
-
-      </button>
-
-      <button
-        class="close-admin"
-        onclick="closeAdmin()">
-
-        بستن
-
-      </button>
-
-      ${ errorText ? `<p style="color:#ff8a8a;font-size:12px;margin-top:15px;">${errorText}</p>` : "" }
-
-    </div>
-
-  `;
-
-}
-
-
-/* ================================
-   LOGIN (real Supabase Auth)
-================================ */
-
-async function loginAdmin(){
-
-  const email =
-    document
-      .getElementById("adminUsername")
-      .value.trim();
-
-  const password =
-    document
-      .getElementById("adminPassword")
-      .value;
-
-  const { error } = await supabaseClient.auth.signInWithPassword({
-
-  email: email,
-    password: password
-  });
-
-  if(error){
-    alert("ایمیل یا رمز عبور اشتباه است.");
-    return;
-  }
-
-  checkSessionAndRender();
-
-}
-
-
-async function logoutAdmin(){
-  await supabaseClient.auth.signOut();
-  currentProfile = null;
-  showLogin();
-}
-
-
-/* ================================
-   ADMIN PANEL (real data)
-================================ */
-
-async function showAdminPanel(){
-
-  document
-    .getElementById("adminContent")
-    .innerHTML = `<div class="admin-panel"><p>در حال بارگذاری...</p></div>`;
+  .getElementBy
